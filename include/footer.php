@@ -37,4 +37,4 @@
     </div>
 </div>
 
-<a class="enhancement__btn btn" href="enhancement.html">Enhancement</a>
+<a class="enhancement__btn btn" href="enhancement.php">Enhancement</a>

@@ -2,7 +2,7 @@
 <header id="top" class="header container">
     <!-- Navigation -->
     <nav class="nav__wrapper-logo">
-        <a href="index.html">
+        <a href="index.php">
             <img class="logo__img" src="images/constant/logo.png" alt="Leafly">
         </a>
     </nav>
@@ -16,30 +16,30 @@
         </label>
             
         <ul class="nav__menu">
-            <li><a class="nav__link" href="classification.html">Classification</a></li>
+            <li><a class="nav__link" href="classification.php">Classification</a></li>
 
-               <li><a class="nav__link" href="tutorial.html">Tutorial</a>
+               <li><a class="nav__link" href="tutorial.php">Tutorial</a>
                 <ul class="dropdown">
-                    <li><a href="tutorial.html">How to do</a></li>
-                    <li><a href="tools.html">Tools to use</a></li>
-                    <li><a href="aftercare.html">Aftercare</a></li>
+                    <li><a href="tutorial.php">How to do</a></li>
+                    <li><a href="tools.php">Tools to use</a></li>
+                    <li><a href="aftercare.php">Aftercare</a></li>
                 </ul>
             </li>
 
-            <li><a class="nav__link" href="identification.html">Identification</a></li>
+            <li><a class="nav__link" href="identification.php">Identification</a></li>
 
-            <li><a class="nav__link" href="contribution.html">Contribution</a></li>
+            <li><a class="nav__link" href="contribution.php">Contribution</a></li>
 
-            <li><a class="nav__link" href="enquiry.html">Enquiry</a></li>
+            <li><a class="nav__link" href="enquiry.php">Enquiry</a></li>
 
-            <li><a class="nav__link" href="profile.html">About</a>
+            <li><a class="nav__link" href="profile.php">About</a>
                 <ul class="dropdown">
-                    <li><a href="profile.html">Meet the Team</a></li>
-                    <li><a href="lawrence.html">Lawrence</a></li>
-                    <li><a href="gibson.html">Gibson</a></li>
-                    <li><a href="edward.html">Edward</a></li>
-                    <li><a href="meiyee.html">Mei Yee</a></li>
-                    <li><a href="faiq.html">Faiq</a></li>
+                    <li><a href="profile.php">Meet the Team</a></li>
+                    <li><a href="lawrence.php">Lawrence</a></li>
+                    <li><a href="gibson.php">Gibson</a></li>
+                    <li><a href="edward.php">Edward</a></li>
+                    <li><a href="meiyee.php">Mei Yee</a></li>
+                    <li><a href="faiq.php">Faiq</a></li>
                 </ul>
             </li>
         </ul>
@@ -52,8 +52,8 @@
                 </svg>
             </a>
             <div class="index__dropdown-login">
-                <a href="login.html">Login</a>
-                <a href="registration.html">Register</a>
+                <a href="login.php">Login</a>
+                <a href="registration.php">Register</a>
             </div>
     </nav>
 </header>
