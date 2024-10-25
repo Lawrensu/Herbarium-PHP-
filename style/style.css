@@ -404,6 +404,11 @@ footer {
     font-size: var(--size-base);
 }
 
+.index__vid-presentation-btn {
+    margin-top: 2rem;
+    font-size: var(--size-base);
+}
+
 /* Back to top btn */
 .back-to-top-btn {
     z-index: 1000;

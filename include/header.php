@@ -2,7 +2,9 @@
 <header id="top" class="header container">
     <!-- Navigation -->
     <nav class="nav__wrapper-logo">
-        <a href="index.html"><img class="logo__img" src="images/constant/logo.png" alt="Leafly"></a>
+        <a href="index.html">
+            <img class="logo__img" src="images/constant/logo.png" alt="Leafly">
+        </a>
     </nav>
 
     <nav class="nav__wrapper-links">
