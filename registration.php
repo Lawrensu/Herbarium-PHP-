@@ -18,8 +18,8 @@
     <!-- Including header part -->
     <?php include 'include/header.php'; ?>
 
-    <!-- The database -->
-    <?php include 'database.php'; ?>
+    <!-- Connect/Create the database -->
+    <?php include 'connection.php'; ?>
 
     <main class="registration__wrapper container">
         <div class="registration__container">

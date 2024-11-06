@@ -18,8 +18,8 @@
     <!-- Include header Part -->
     <?php include 'include/header.php'; ?>
 
-    <!-- The database -->
-    <?php include 'database.php'; ?>
+    <!-- Connect/Create the database -->
+    <?php include 'connection.php'; ?>
 
     <main class="login__wrapper container">
         <article class="login__container">
