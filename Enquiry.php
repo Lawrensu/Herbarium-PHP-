@@ -18,6 +18,9 @@
    <!-- Including header part -->
    <?php include 'include/header.php'; ?>
 
+   <!-- The database -->
+   <?php include 'database.php'; ?>
+
     <main class="enquiry__wrapper container">
      <article class="enquiry">
         <form class="enquiry__form" action="#" method="post">

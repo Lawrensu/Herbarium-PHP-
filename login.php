@@ -18,6 +18,9 @@
     <!-- Include header Part -->
     <?php include 'include/header.php'; ?>
 
+    <!-- The database -->
+    <?php include 'database.php'; ?>
+
     <main class="login__wrapper container">
         <article class="login__container">
             <h1>Login</h1>

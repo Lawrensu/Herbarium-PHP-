@@ -41,7 +41,7 @@
                     <li><a href="meiyee.php">Mei Yee</a></li>
                     <li><a href="faiq.php">Faiq</a></li>
                 </ul>
-            </li>
+            </li>   
         </ul>
     </nav>
 

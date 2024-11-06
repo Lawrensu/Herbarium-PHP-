@@ -18,6 +18,9 @@
     <!-- Including header part -->
     <?php include 'include/header.php'; ?>
 
+    <!-- The database -->
+    <?php include 'database.php'; ?>
+
     <main class="contribution__container container">
         <article class="contribution">
             <section class="contribution__wrapper">  

@@ -18,6 +18,9 @@
     <!-- Including header part -->
     <?php include 'include/header.php'; ?>
 
+    <!-- The database -->
+    <?php include 'database.php'; ?>
+
     <main class="registration__wrapper container">
         <div class="registration__container">
             <h1>Registration</h1>
