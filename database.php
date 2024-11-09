@@ -38,7 +38,7 @@
         phonenumber INT(10) NOT NULL,
         category TEXT,
     )";
-
+    
 
     // Contribution table
     $sql = "CREATE TABLE IF NOT EXISTS usersContribution ()";
