@@ -6,7 +6,7 @@
     $dbname = "Leafly_DB";
 
     // create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
+    $conn = mysqli($servername, $username, $password, $dbname);
     // Check connection
     if (!$conn) {
         die("Connection failed: " . mysqli_connect_error());
@@ -16,13 +16,14 @@
 
     // Registration/Registered User table
     $sql = "CREATE TABLE IF NOT EXISTS registeredUsers ()";
-    
+
+
     // Enquiry table
-    $sql = "CREATE TABLE IF NOT EXISTS userEnquiry ()";
+    $sql =  ;
 
 
     // Contribution table
-    $sql = "CREATE TABLE IF NOT EXISTS userContribution ()";
+    $sql = ;
 
 
     
