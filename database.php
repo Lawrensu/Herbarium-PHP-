@@ -25,11 +25,11 @@
 
 
     // Enquiry table
-    $sql = ;
+    $sql =  ;
 
 
     // Contribution table
-    $sql = ;
+    $sql = "CREATE TABLE IF NOT EXISTS usersContribution ()";
 
 
     
