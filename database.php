@@ -16,16 +16,28 @@
 
     // Registration/Registered User table
     $sql = "CREATE TABLE IF NOT EXISTS registeredUsers (
-        id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        userID INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
         username VARCHAR(25) NOT NULL,
-        email VARCHAR(25) NOT NULL,
+        email VARCHAR(50) NOT NULL,
         password VARCHAR(25) NOT NULL,
         reg_date TIMESTAMP
     )";
 
 
     // Enquiry table
-    $sql =  ;
+    $sql =  "CREATE TABLE IF NOT EXISTS enquiry (
+        enquiryID INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        fname VARCHAR(25) NOT NULL,
+        lname VARCHAR(25) NOT NULL,
+        email VARCHAR(50) NOT NULL,
+        contact INT(10) NOT NULL,
+        street VARCHAR(40) NOT NULL,
+        city VARCHAR(20) NOT NULL,
+        state TEXT,
+        postcode INT(5) NOT NULL,
+        phonenumber INT(10) NOT NULL,
+        category TEXT,
+    )";
 
 
     // Contribution table
