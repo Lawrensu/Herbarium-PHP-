@@ -16,8 +16,7 @@
 
     // Registration/Registered User table
     $sql = "CREATE TABLE IF NOT EXISTS registeredUsers ()";
-
-
+    
     // Enquiry table
     $sql = "CREATE TABLE IF NOT EXISTS userEnquiry ()";
 
