@@ -41,7 +41,7 @@
 
 
     // Contribution table
-    $sql = "CREATE TABLE IF NOT EXISTS usersContribution ()";
+    // $sql = "CREATE TABLE IF NOT EXISTS usersContribution ()";
 
 
     
