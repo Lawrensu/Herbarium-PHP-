@@ -6,7 +6,7 @@
     $dbname = "Leafly_DB";
 
     // create connection
-    $conn = mysqli($servername, $username, $password, $dbname);
+    $conn = new mysqli($servername, $username, $password, $dbname);
     // Check connection
     if (!$conn) {
         die("Connection failed: " . mysqli_connect_error());
@@ -20,12 +20,14 @@
         username VARCHAR(25) NOT NULL,
         email VARCHAR(50) NOT NULL,
         password VARCHAR(25) NOT NULL,
-        reg_date TIMESTAMP
+        reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
     )";
+
+    mysqli_query($conn, $sql);
 
 
     // Enquiry table
-    $sql =  "CREATE TABLE IF NOT EXISTS enquiry (
+    $sql =  "CREATE TABLE IF NOT EXISTS userEnquiry (
         enquiryID INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
         fname VARCHAR(25) NOT NULL,
         lname VARCHAR(25) NOT NULL,
@@ -36,16 +38,18 @@
         state TEXT,
         postcode INT(5) NOT NULL,
         phonenumber INT(10) NOT NULL,
-        category TEXT,
+        category TEXT
     )";
+<<<<<<< HEAD
     
+=======
+
+    mysqli_query($conn, $sql);
+
+>>>>>>> 55eb2dce6a60b3f16001735942b404c91c1509ea
 
     // Contribution table
     // $sql = "CREATE TABLE IF NOT EXISTS usersContribution ()";
 
-
-    
-
-    mysqli_query($conn, $sql);
     mysqli_close($conn);
 ?>

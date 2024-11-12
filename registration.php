@@ -20,6 +20,7 @@
 
     <!-- Connect/Create the database -->
     <?php include 'connection.php'; ?>
+    <?php include 'database.php'; ?>
 
     <main class="registration__wrapper container">
         <div class="registration__container">
