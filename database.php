@@ -52,7 +52,7 @@
         plantFamily TEXT,
         plantGenus TEXT,
         plantSpecies TEXT,
-        picturePath VARCHAR(255),  // Column to store the file path of the uploaded picture
+        picturePath VARCHAR(255), 
         contribution_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
         FOREIGN KEY (userID) REFERENCES registeredUsers(userID)
     )";
