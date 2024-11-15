@@ -21,9 +21,43 @@
     <!-- Connect/Create the database -->
     <?php include 'connection.php'; ?>
 
+    <?php
+    session_start();
+    include 'connection.php';
+
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+
+        $query = "SELECT * FROM users WHERE email = ?";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            $user = $result->fetch_assoc();
+            if (password_verify($password, $user['password'])) {
+                $_SESSION['user_id'] = $user['id'];
+                $_SESSION['user_email'] = $user['email'];
+                header("Location: dashboard.php");
+                exit();
+            } else {
+                $error = "Invalid password.";
+            }
+        } else {
+            $error = "No user found with this email.";
+        }
+    }
+    ?>
+
     <main class="login__wrapper container">
         <article class="login__container">
             <h1>Login</h1>
+
+            <?php if (isset($error)): ?>
+                <p class="error"><?php echo $error; ?></p>
+            <?php endif; ?>
 
             <form action="#" class="login__form" method="post">
                 <fieldset>
