@@ -46,7 +46,18 @@
 
 
     // Contribution table
-    // $sql = "CREATE TABLE IF NOT EXISTS usersContribution ()";
+    $sql = "CREATE TALBE IF NOT EXISTS userContribution (
+        contributionID INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        plantName VARCHAR(25) NOT NULL,
+        plantFamily TEXT,
+        plantGenus TEXT,
+        plantSpecies TEXT,
+        picturePath VARCHAR(255), 
+        contribution_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+        FOREIGN KEY (userID) REFERENCES registeredUsers(userID)
+    )";
+
+    mysqli_query($conn, $sql);
 
     mysqli_close($conn);
 ?>
