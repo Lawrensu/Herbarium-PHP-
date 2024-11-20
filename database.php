@@ -14,6 +14,13 @@
 
     // Tables creation
 
+    //Table of admin
+    $sql = "CREATE TABLE IF NOT EXISTS admin (
+        adminID INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        username VARCHAR(25) NOT NULL,
+        password VARCHAR(25) NOT NULL,
+    )";
+
     // Registration/Registered User table
     $sql = "CREATE TABLE IF NOT EXISTS registeredUsers (
         userID INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
