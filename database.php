@@ -14,6 +14,9 @@
 
     // Tables creation
 
+    //Login Admin Table
+    
+
     // Registration/Registered User table
     $sql = "CREATE TABLE IF NOT EXISTS registeredUsers (
         userID INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
