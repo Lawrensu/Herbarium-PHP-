@@ -14,6 +14,23 @@
 
     // Tables creation
 
+    // Admin Table 
+    $sql = "CREATE TABLE IF NOT EXISTS admin (
+        username VARCHAR(25) NOT NULL UNIQUE,
+        password VARCHAR(255) NOT NULL
+    )";
+
+    mysqli_query($conn, $sql);
+
+    // Insert default admin credentials
+    $adminUsername = 'Admin';
+    $adminPassword = 'admin'; 
+
+    $sql = "INSERT INTO admin (username, password) VALUES ('$adminUsername', '$adminPassword')
+            ON DUPLICATE KEY UPDATE password='$adminPassword'";
+
+    mysqli_query($conn, $sql);  
+
     // Registration/Registered User table
     $sql = "CREATE TABLE IF NOT EXISTS registeredUsers (
         userID INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -40,14 +57,14 @@
         phonenumber INT(10) NOT NULL,
         category TEXT
     )";
-    
 
     mysqli_query($conn, $sql);
 
 
     // Contribution table
-    $sql = "CREATE TALBE IF NOT EXISTS userContribution (
+    $sql = "CREATE TABLE IF NOT EXISTS userContribution (
         contributionID INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        userID INT(6) UNSIGNED NOT NULL,
         plantName VARCHAR(25) NOT NULL,
         plantFamily TEXT,
         plantGenus TEXT,
@@ -58,6 +75,7 @@
     )";
 
     mysqli_query($conn, $sql);
+
 
     mysqli_close($conn);
 ?>
