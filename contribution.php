@@ -19,7 +19,7 @@
     <?php include 'include/header.php'; ?>
 
     <!-- Connect/Create the database -->
-    <?php include 'connection.php'; ?>
+    <?php include 'include/contribution_process.php'; ?>
 
     <main class="contribution__container container">
         <article class="contribution">
