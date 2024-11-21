@@ -115,7 +115,7 @@
 
                 <input class="submit__btn btn" type="submit" value="Login">
 
-                <p>Don't have an account? <a class="register__link" href="registration.html">Register Here</a></p>
+                <p>Don't have an account? <a class="register__link" href="registration.php">Register Here</a></p>
             </form>
             <?php endif; ?>
         </article>

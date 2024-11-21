@@ -4,41 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="author" content="">
-    <meta name="description" content="">
-    <meta name="keywords" content="">
+    <meta name="author" content="Gibson">
+    <meta name="description" content="Admin">
+    <meta name="keywords" content="admin panel">
 
-    <title>User Management</title>
+    <title>Admin Panel</title>
 </head>
 
 <body>
-    <h1>User Management</h1>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Username</th>
-                <th>Email</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-            // Fetch users from the database
-            // Assuming $users is an array of user data
-            foreach ($users as $user) {
-                echo "<tr>";
-                echo "<td>{$user['id']}</td>";
-                echo "<td>{$user['username']}</td>";
-                echo "<td>{$user['email']}</td>";
-                echo "<td>
-                        <a href='edit_user.php?id={$user['id']}'>Edit</a> | 
-                        <a href='delete_user.php?id={$user['id']}'>Delete</a>
-                      </td>";
-                echo "</tr>";
-            }
-            ?>
-        </tbody>
-    </table>
+    <h1>Admin Panel</h1>
+    <p>Welcome Admin</p>
+    <p>Here you can manage the users, enquiries and contributions</p>
+    <ul>
+        <li><a href="user_dashboard.php">View Users</a></li>
+        <li><a href="view_enquiry.php">View Enquiries</a></li>
+        <li><a href="view_contribute.php">View Contributions</a></li>
+    </ul>
+    <p><a href="login.php">Logout</a></p>
+    
 </body>
 </html>

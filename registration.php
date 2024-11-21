@@ -53,7 +53,7 @@
     
                 <input class="submit__btn btn" type="submit" value="Register">
 
-                <p>Already have an account? <a class="login__link" href="login.html">Login Here</a></p>
+                <p>Already have an account? <a class="login__link" href="login.php">Login Here</a></p>
             </form>
         </div>
     </main>
