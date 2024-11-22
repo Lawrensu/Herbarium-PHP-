@@ -13,6 +13,28 @@
     }
 
     // Tables creation
+    //Table of admin
+    $sql = "CREATE TABLE IF NOT EXISTS admin (
+        adminID INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        username VARCHAR(25) NOT NULL,
+        password VARCHAR(25) NOT NULL,
+        reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    )";
+
+    mysqli_query($conn, $sql);
+
+    //Table of users
+    $sql = "CREATE TABLE IF NOT EXISTS users (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        username VARCHAR(100) NOT NULL,
+        email VARCHAR(100) UNIQUE NOT NULL,
+        password_hash VARCHAR(255) NOT NULL,
+        role ENUM('Admin', 'User') DEFAULT 'User',
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    )";
+
+    mysqli_query($conn, $sql);
+
 
     // Registration/Registered User table
     $sql = "CREATE TABLE IF NOT EXISTS registeredUsers (
@@ -40,14 +62,14 @@
         phonenumber INT(10) NOT NULL,
         category TEXT
     )";
-    
 
     mysqli_query($conn, $sql);
 
 
     // Contribution table
-    $sql = "CREATE TALBE IF NOT EXISTS userContribution (
+    $sql = "CREATE TABLE IF NOT EXISTS userContribution (
         contributionID INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        userID INT(6) UNSIGNED NOT NULL,
         plantName VARCHAR(25) NOT NULL,
         plantFamily TEXT,
         plantGenus TEXT,
@@ -58,6 +80,7 @@
     )";
 
     mysqli_query($conn, $sql);
+
 
     mysqli_close($conn);
 ?>

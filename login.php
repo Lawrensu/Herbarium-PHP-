@@ -18,8 +18,73 @@
     <!-- Include header Part -->
     <?php include 'include/header.php'; ?>
 
-    <!-- Connect/Create the database -->
-    <?php include 'connection.php'; ?>
+    <!-- Login Session Part -->
+    <?php
+        session_start();
+        include 'connection.php';
+        include 'database.php';
+
+        /// Reconnect to the database for further operations
+        $conn = new mysqli($servername, $username, $password, 'Leafly_DB');
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+
+        $error = '';
+        $success = '';
+
+        // Check if the user is already logged in
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+    
+            // Check if the user is an admin
+            $query = "SELECT * FROM admin WHERE username = ?";
+            $stmt = $conn->prepare($query);
+            $stmt->bind_param("s", $email);
+            $stmt->execute();
+            $result = $stmt->get_result();
+    
+            if ($result->num_rows > 0) {
+                $admin = $result->fetch_assoc();
+                if ($password === $admin['password']) {
+                    $_SESSION['admin_username'] = $admin['username'];
+                    header("Location: view_admin.php");
+                    exit();
+                } else {
+                    $error = "Invalid password.";
+                }
+            } else {
+
+                // Check if the user is a registered user
+                $query = "SELECT * FROM registeredUsers WHERE email = ?";
+                $stmt = $conn->prepare($query);
+                $stmt->bind_param("s", $email);
+                $stmt->execute();
+                $result = $stmt->get_result();
+    
+                if ($result->num_rows > 0) {
+                    $user = $result->fetch_assoc();
+                    if ($password === $user['password']) {
+                        $_SESSION['user_id'] = $user['userID'];
+                        $_SESSION['user_email'] = $user['email'];
+                        $success = "You are now logged in.";
+                    } else {
+                        $error = "Invalid password.";
+                    }
+                } else {
+                    $error = "No user found with this email.";
+                }
+            }
+    
+            $stmt->close();
+        }
+    
+        // Ensure the connection is only closed once
+        if ($conn) {
+            $conn->close();
+        }
+    ?>
 
     <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -45,6 +110,15 @@
         <article class="login__container">
             <h1>Login</h1>
 
+            <?php if (!empty($error)): ?>
+                <p class="error"><?php echo $error; ?></p>
+            <?php endif; ?>
+
+            <?php if (!empty($success)): ?>
+                <p class="success"><?php echo $success; ?></p>
+                <p><a href="change_password.php">Change Password</a> | <a href="delete_account.php">Delete Account</a></p>
+            <?php else: ?>
+
             <form action="#" class="login__form" method="post">
                 <fieldset>
                     <legend>Welcome back to Leafly</legend>
@@ -61,8 +135,9 @@
 
                 <input class="submit__btn btn" type="submit" value="Login">
 
-                <p>Don't have an account? <a class="register__link" href="registration.html">Register Here</a></p>
+                <p>Don't have an account? <a class="register__link" href="registration.php">Register Here</a></p>
             </form>
+            <?php endif; ?>
         </article>
     </main>
 
