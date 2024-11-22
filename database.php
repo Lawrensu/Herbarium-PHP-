@@ -8,17 +8,16 @@
     // create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
     // Check connection
-    if (!$conn) {
-        die("Connection failed: " . mysqli_connect_error());
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
     }
 
     // Tables creation
     //Table of admin
-    $sql = "CREATE TABLE IF NOT EXISTS admin (
+    $sql = "CREATE TABLE IF NOT EXISTS admin(
         adminID INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
         username VARCHAR(25) NOT NULL,
-        password VARCHAR(25) NOT NULL,
-        reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+        password VARCHAR(25) NOT NULL
     )";
 
     mysqli_query($conn, $sql);

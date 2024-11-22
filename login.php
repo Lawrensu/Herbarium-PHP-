@@ -39,7 +39,7 @@
             $password = $_POST['password'];
     
             // Check if the user is an admin
-            $query = "SELECT * FROM admin WHERE username = ?";
+            $query = "SELECT * FROM adminTable WHERE username = ?"; // Updated table name
             $stmt = $conn->prepare($query);
             $stmt->bind_param("s", $email);
             $stmt->execute();
@@ -47,7 +47,7 @@
     
             if ($result->num_rows > 0) {
                 $admin = $result->fetch_assoc();
-                if ($password === $admin['password']) {
+                if (password_verify($password, $admin['password'])) { // Use password_verify
                     $_SESSION['admin_username'] = $admin['username'];
                     header("Location: view_admin.php");
                     exit();
@@ -65,7 +65,7 @@
     
                 if ($result->num_rows > 0) {
                     $user = $result->fetch_assoc();
-                    if ($password === $user['password']) {
+                    if (password_verify($password, $user['password'])) { // Use password_verify
                         $_SESSION['user_id'] = $user['userID'];
                         $_SESSION['user_email'] = $user['email'];
                         $success = "You are now logged in.";
