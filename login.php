@@ -21,6 +21,26 @@
     <!-- Connect/Create the database -->
     <?php include 'connection.php'; ?>
 
+    <?php
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+
+        // Query to check if the user exists
+        $query = "SELECT * FROM users WHERE email = '$email' AND password = '$password'";
+        $result = mysqli_query($conn, $query);
+
+        if (mysqli_num_rows($result) > 0) {
+            // User exists, start a session
+            session_start();
+            $_SESSION['email'] = $email;
+            header("Location: dashboard.php"); // Redirect to dashboard or another page
+        } else {
+            echo "<p>Invalid email or password. Please try again.</p>";
+        }
+    }
+    ?>
+
     <main class="login__wrapper container">
         <article class="login__container">
             <h1>Login</h1>
