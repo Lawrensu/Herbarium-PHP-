@@ -17,7 +17,7 @@
     $sql = "CREATE TABLE IF NOT EXISTS admin(
         adminID INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
         username VARCHAR(25) NOT NULL,
-        password VARCHAR(25) NOT NULL
+        password VARCHAR(255) NOT NULL -- Ensure the password field can store hashed passwords
     )";
 
     mysqli_query($conn, $sql);

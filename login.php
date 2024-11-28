@@ -20,123 +20,135 @@
 
     <!-- Login Session Part -->
     <?php
-        session_start();
-        include 'connection.php';
-        include 'database.php';
+session_set_cookie_params([
+    'lifetime' => 0,
+    'path' => '/',
+    'domain' => 'yourdomain.com', // Change this to your actual domain
+    'secure' => true, // Send cookies only over HTTPS
+    'httponly' => true, // Prevent JavaScript from accessing session cookie
+    'samesite' => 'Strict'
+]);
+session_start();
 
-        /// Reconnect to the database for further operations
-        $conn = new mysqli($servername, $username, $password, 'Leafly_DB');
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
+include 'connection.php';
+include 'database.php';
 
-        $error = '';
-        $success = '';
+// Reconnect to the database for further operations
+$conn = new mysqli($servername, $username, $password, $dbname);
+if ($conn->connect_error) {
+    error_log("Connection failed: " . $conn->connect_error);
+    die("Connection failed: " . $conn->connect_error);
+}
 
-        // Check if the user is already logged in
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $email = $_POST['email'];
-            $password = $_POST['password'];
-    
-            // Check if the user is an admin
-            $query = "SELECT * FROM adminTable WHERE username = ?"; // Updated table name
-            $stmt = $conn->prepare($query);
-            $stmt->bind_param("s", $email);
+$error = '';
+$success = '';
+
+// Check if the user is already logged in
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $email = $_POST['email'] ?? '';
+    $password = $_POST['password'] ?? '';
+
+    if (empty($email) || empty($password)) {
+        $error = "Please fill in all fields.";
+    } else {
+        // Check if the user is an admin (username without @)
+        $query = "SELECT * FROM admin WHERE username = ?";
+        $stmt = $conn->prepare($query);
+        if (!$stmt) {
+            error_log("Prepare failed: " . $conn->error);
+        } else {
+            $stmt->bind_param("s", $email); // Treat email as the admin username
             $stmt->execute();
             $result = $stmt->get_result();
-    
+
             if ($result->num_rows > 0) {
                 $admin = $result->fetch_assoc();
-                if (password_verify($password, $admin['password'])) { // Use password_verify
-                    $_SESSION['admin_username'] = $admin['username'];
+                // Debugging statement
+                error_log("Admin password hash: " . $admin['password']);
+                if (password_verify($password, $admin['password'])) { // Correct the key to 'password'
+                    $_SESSION['username'] = $admin['username'];
+                    session_regenerate_id(); // Regenerate session ID to prevent session fixation
                     header("Location: view_admin.php");
                     exit();
                 } else {
+                    error_log("Admin password verification failed.");
                     $error = "Invalid password.";
                 }
             } else {
-
                 // Check if the user is a registered user
                 $query = "SELECT * FROM registeredUsers WHERE email = ?";
                 $stmt = $conn->prepare($query);
-                $stmt->bind_param("s", $email);
-                $stmt->execute();
-                $result = $stmt->get_result();
-    
-                if ($result->num_rows > 0) {
-                    $user = $result->fetch_assoc();
-                    if (password_verify($password, $user['password'])) { // Use password_verify
-                        $_SESSION['user_id'] = $user['userID'];
-                        $_SESSION['user_email'] = $user['email'];
-                        $success = "You are now logged in.";
-                    } else {
-                        $error = "Invalid password.";
-                    }
+                if (!$stmt) {
+                    error_log("Prepare failed: " . $conn->error);
                 } else {
-                    $error = "No user found with this email.";
+                    $stmt->bind_param("s", $email); // Bind email for registered users
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+
+                    if ($result->num_rows > 0) {
+                        $user = $result->fetch_assoc();
+                        // Debugging statement
+                        error_log("User password hash: " . $user['password']);
+                        if (password_verify($password, $user['password'])) {
+                            $_SESSION['user_id'] = $user['userID'];
+                            $_SESSION['user_email'] = $user['email'];
+                            session_regenerate_id(); // Regenerate session ID to prevent session fixation
+                            $success = "You are now logged in.";
+                            header("Location: user_dashboard.php"); // Redirect after login
+                            exit();
+                        } else {
+                            error_log("User password verification failed.");
+                            $error = "Invalid password.";
+                        }
+                    } else {
+                        $error = "No user found with this email.";
+                    }
                 }
             }
-    
             $stmt->close();
         }
-    
-        // Ensure the connection is only closed once
-        if ($conn) {
-            $conn->close();
-        }
-    ?>
-
-    <?php
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-
-        // Query to check if the user exists
-        $query = "SELECT * FROM users WHERE email = '$email' AND password = '$password'";
-        $result = mysqli_query($conn, $query);
-
-        if (mysqli_num_rows($result) > 0) {
-            // User exists, start a session
-            session_start();
-            $_SESSION['email'] = $email;
-            header("Location: dashboard.php"); // Redirect to dashboard or another page
-        } else {
-            echo "<p>Invalid email or password. Please try again.</p>";
-        }
     }
-    ?>
+}
 
+// Ensure the connection is only closed once
+if ($conn) {
+    $conn->close();
+}
+?>
+
+    <!-- Login Session Part -->
     <main class="login__wrapper container">
         <article class="login__container">
             <h1>Login</h1>
 
             <?php if (!empty($error)): ?>
-                <p class="error"><?php echo $error; ?></p>
+                <p class="error"><?php echo htmlspecialchars($error); ?></p>
             <?php endif; ?>
 
             <?php if (!empty($success)): ?>
-                <p class="success"><?php echo $success; ?></p>
+                <p class="success"><?php echo htmlspecialchars($success); ?></p>
                 <p><a href="change_password.php">Change Password</a> | <a href="delete_account.php">Delete Account</a></p>
             <?php else: ?>
 
-            <form action="#" class="login__form" method="post">
-                <fieldset>
-                    <legend>Welcome back to Leafly</legend>
-                    <div class="login__input-box">
-                        <label for="email">Email</label>
-                        <input type="email" placeholder="Enter your email" id="email" name="email" required="required">
-                    </div>
+                <form action="#" class="login__form" method="post">
+                    <fieldset>
+                        <legend>Welcome back to Leafly</legend>
+                        <div class="login__input-box">
+                            <label for="email">Email</label>
+                            <input type="text" placeholder="Enter your username or email" id="email" name="email" required>
+                        </div>
 
-                    <div class="login__input-box">
-                        <label for="password">Password</label>
-                        <input type="password" placeholder="Enter your password" id="password" name="password" maxlength="25" minlength="1" required="required">
-                    </div>
-                </fieldset>     
+                        <div class="login__input-box">
+                            <label for="password">Password</label>
+                            <input type="password" placeholder="Enter your password" id="password" name="password" maxlength="25" minlength="1" required>
+                        </div>
+                    </fieldset>     
 
-                <input class="submit__btn btn" type="submit" value="Login">
+                    <input class="submit__btn btn" type="submit" value="Login">
 
-                <p>Don't have an account? <a class="register__link" href="registration.php">Register Here</a></p>
-            </form>
+                    <p>Don't have an account? <a class="register__link" href="registration.php">Register Here</a></p>
+                    <p><a class="forgot__link" href="change_password.php">Forgot Password?</a></p>
+                </form>
             <?php endif; ?>
         </article>
     </main>
@@ -152,7 +164,7 @@
             <a target="_blank" class="footer__acknowledgement-link" href="https://www.youtube.com/watch?v=zh1xus05Kl8&t=40sgit">Button Style</a>
             <a target="_blank" class="footer__acknowledgement-link" href="https://www.geeksforgeeks.org/gradient-borders/">Gradient Border Guide</a>
         </div>
-     </footer>
+    </footer>
 
     <?php include 'include/bckToTopBtn.php'; ?>
 </body>

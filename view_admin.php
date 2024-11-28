@@ -11,8 +11,11 @@
     <title>User Management</title>
 </head>
 <body>
-
-
-    
+    <h1>Admin Dashboard</h1>
+    <ul>
+        <li><a href="view_enquiry.php">Manage Enquiries</a></li>
+        <li><a href="user_dashboard.php">Manage Users</a></li>
+        <li><a href="view_contribution.php">Manage Herbarium Contributions</a></li>
+    </ul>
 </body>
 </html>
