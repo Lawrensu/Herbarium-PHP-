@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="author" content="">
-    <meta name="description" content="">
-    <meta name="keywords" content="">
+    <meta name="author" content="Gibson">
+    <meta name="description" content="admin dashboard">
+    <meta name="keywords" content="admin,view">
 
     <title>Admin View</title>
     <link rel="stylesheet" type="text/css" href="style/style.css">
@@ -21,19 +21,11 @@
         </a>
     </nav>
 
-    <nav class="nav__wrapper-links">
-        <input type="checkbox" id="nav-toggle" class="nav__toggle-checkbox">
-        <label for="nav-toggle" class="nav__toggle-label">
-            <span></span>
-            <span></span>
-            <span></span>
-        </label>
-            
-        <ul class="nav__menu">
-            <li><a class="nav__link" href="view_enquiry.php">Manage Enquiries</a></li>
-            <li><a class="nav__link" href="user_dashboard.php">Manage Users</a></li>
-            <li><a class="nav__link" href="view_contribution.php">Manage Contributions</a></li>
-        </ul>
+    <!-- Search Bar -->
+    <nav class="nav__wrapper-search">
+        <form action="search_results.php" method="get">
+            <input type="text" name="query" placeholder="Search..." class="search__input">
+            <button type="submit" class="search__button">Search</button>
     </nav>
 
     <nav class="nav__wrapper-login">
@@ -47,13 +39,32 @@
         </div>
     </nav>
 </header>
+<div class="dashboard">
+    <!-- Sidebar -->
+    <nav class="sidebar-admin">
+      <h2>Dashboard</h2>
+      <ul>
+        <li><a href="user_dashboard.php">Users</a></li>
+        <li><a href="view_enquiry.php">Enquires</a></li>
+        <li><a href="view_contribution.php">Contribution</a></li>
+        <li><a href="login.php">Logout</a></li>
+      </ul>
+    </nav>
 
-    <h1>Admin Dashboard</h1>
-    <ul>
-        <li><a href="view_enquiry.php">Manage Enquiries</a></li>
-        <li><a href="user_dashboard.php">Manage Users</a></li>
-        <li><a href="view_contribution.php">Manage Herbarium Contributions</a></li>
-    </ul>
+    <!-- Main Content -->
+    <div class="main-content">
+        <h1>Admin View</h1>
+        <p>Welcome Admin</p>
+        <p>Here you can view the listing users,enquiries and contributions</p>
+        <ul>
+            <li><a href="user_dashboard.php">View Users</a></li>
+            <li><a href="view_enquiry.php">View Enquiries</a></li>
+            <li><a href="view_contribution.php">View Contributions</a></li>
+        </ul>
+    </div>
+
+
+
 
 
      <!-- Footer Part -->
