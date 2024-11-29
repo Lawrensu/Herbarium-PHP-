@@ -9,6 +9,6 @@
 <body>
 <h1>Registration Error</h1>
 <h3>You have missing/empty fields</h3>
-<p>Please click this <a href = "register.php">link</a> to return to register page</p>
+<p>Please click this <a href = "registration.php">link</a> to return to register page</p>
 </body>
 </html>
