@@ -1,8 +1,8 @@
 <?php
-// Include database connection
-include 'connection.php';
-
-// Initialize variables to store error messages
+    //include database connection 
+    include 'database.php';
+    include 'connection.php'; // Ensure this includes the correct connection variable
+    // Initialize variables to store error messages
 $usernameError = $emailError = $passwordError = "";
 $username = $email = $password = "";
 
