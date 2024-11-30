@@ -306,6 +306,15 @@ button {
     transform: scale(1.2);
 }
 
+/* Username Styling */
+.username {
+    font-size: var(--size-base); 
+    font-weight: bold; 
+    color: var(--clr-dark);
+    margin-left: var(--size-xs); 
+    vertical-align: middle; 
+}
+
 .forgot__link {
     text-decoration: none;
     color: var(--clr-dark);
@@ -1468,6 +1477,30 @@ legend {
     padding: 0 10px;
     color: var(--clr-dark);
     text-align: center;
+}
+
+
+/* ENQUIRY CONFIRMATION PAGE */
+.confirmation__wrapper-container {
+    display: flex;
+    flex-direction: column;
+    padding-top: 4rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.confirmation__container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--clr-yellow);padding: 2rem;
+    width: 95vw;
+    border: 0.4em solid transparent;
+    border-image: linear-gradient(to right, rgb(3, 95, 23), rgb(34, 193, 195)) 1;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
 }
 
 
@@ -2832,6 +2865,19 @@ legend {
     
     .submit__btn {
         font-size: var(--size-base);
+    }
+
+    /* ENQUIRY CONFIRMATION PAGE */
+    .enquiry__confirmation-wrapper h1 {
+        font-size: var(--size-6xl);
+    }
+
+    .enquiry__confirmation-wrapper p {
+        font-size: var(--size-lg);
+    }
+
+    .enquiry__confirmation-wrapper a {
+        font-size: var(--size-lg);
     }
 
     
