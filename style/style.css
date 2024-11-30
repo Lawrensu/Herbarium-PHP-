@@ -306,6 +306,18 @@ button {
     transform: scale(1.2);
 }
 
+.forgot__link {
+    text-decoration: none;
+    color: var(--clr-dark);
+
+    transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.forgot__link:hover {
+    color: var(--clr-orange);
+    text-decoration: underline;
+}
+
 /* Dropdown Pages */
 .dropdown {
     display: none;

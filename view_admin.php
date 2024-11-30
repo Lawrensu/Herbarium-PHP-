@@ -59,13 +59,9 @@
         <ul>
             <li><a href="user_dashboard.php">View Users</a></li>
             <li><a href="view_enquiry.php">View Enquiries</a></li>
-            <li><a href="view_contribution.php">View Contributions</a></li>
+            <li><a href="view_contribute.php">View Contributions</a></li>
         </ul>
     </div>
-
-
-
-
 
      <!-- Footer Part -->
      <footer>

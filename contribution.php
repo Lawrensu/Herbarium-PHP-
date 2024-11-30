@@ -1,3 +1,65 @@
+<!-- Error Checking -->
+<?php
+function validateFormData($postData, $fileData)
+{
+    $errors = [];
+
+    // Check if fields are empty
+    if (empty($postData['plant-name'])) {
+        $errors[] = "Plant name is required.";
+    }
+    if (empty($postData['plant-family'])) {
+        $errors[] = "Plant family is required.";
+    }
+    if (empty($postData['plant-genus'])) {
+        $errors[] = "Plant genus is required.";
+    }
+    if (empty($postData['plant-species'])) {
+        $errors[] = "Plant species is required.";
+    }
+
+    // Validate uploaded files
+    $allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
+    
+    if (empty($fileData['fresh-leaf']['name'])) {
+        $errors[] = "Fresh leaf image is required.";
+    } elseif (!in_array($fileData['fresh-leaf']['type'], $allowedTypes)) {
+        $errors[] = "Invalid file type for fresh leaf. Only JPG, PNG, and GIF are allowed.";
+    }
+
+    if (empty($fileData['herbarium']['name'])) {
+        $errors[] = "Herbarium image is required.";
+    } elseif (!in_array($fileData['herbarium']['type'], $allowedTypes)) {
+        $errors[] = "Invalid file type for herbarium. Only JPG, PNG, and GIF are allowed.";
+    }
+
+    // Check file size (e.g., limit to 2MB)
+    $maxFileSize = 2 * 1024 * 1024; // 2MB in bytes
+    if ($fileData['fresh-leaf']['size'] > $maxFileSize) {
+        $errors[] = "Fresh leaf image exceeds the maximum size of 2MB.";
+    }
+    if ($fileData['herbarium']['size'] > $maxFileSize) {
+        $errors[] = "Herbarium image exceeds the maximum size of 2MB.";
+    }
+
+    return $errors;
+}
+
+// Usage example
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    // Validate the form data
+    $errors = validateFormData($_POST, $_FILES);
+
+    if (!empty($errors)) {
+        // Display errors
+        foreach ($errors as $error) {
+            echo "<p style='color: red;'>$error</p>";
+        }
+        exit; // Stop further processing if errors exist
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
