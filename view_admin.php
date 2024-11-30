@@ -8,27 +8,50 @@
     <meta name="keywords" content="admin, view, dashboard">
 
     <link rel="stylesheet" type="text/css" href="style/style.css">
-    <link rel="stylesheet" type="text/css" href="style/styles.css">
     <title>Admin View</title>
 </head>
 <body>
     <!-- Header -->
-     <?php include 'include/header.php'; ?>
+    <?php include 'include/header.php'; ?>
 
     <!-- Main Content -->
     <div class="main-content-admin">
         <h1>Admin Dashboard</h1>
-        <p>Welcome Admin</p>
-        <p>Here you can view the listing of users, enquiries, and contributions.</p>
-        <ul>
-            <li><a href="user_dashboard.php">View Users</a></li>
-            <li><a href="view_enquiry.php">View Enquiries</a></li>
-            <li><a href="view_contribute.php">View Contributions</a></li>
-        </ul>
+        <p>Welcome, Admin! Here, you can manage users, handle enquiries, review contributions, and monitor statistics.</p>
+
+        <div class="dashboard-sections">
+            <!-- User Management -->
+            <section>
+                <h2>User Management</h2>
+                <p>View and manage all registered users:</p>
+                <a href="user_dashboard.php" class="btn">View Users</a>
+            </section>
+
+            <!-- Enquiries -->
+            <section>
+                <h2>Enquiries</h2>
+                <p>Respond to enquiries submitted by users:</p>
+                <a href="view_enquiry.php" class="btn">View Enquiries</a>
+            </section>
+
+            <!-- Contributions -->
+            <section>
+                <h2>Contributions</h2>
+                <p>Review contributions made by users:</p>
+                <a href="view_contribute.php" class="btn">View Contributions</a>
+            </section>
+
+            <!-- Logout -->
+            <section>
+                <h2>Logout</h2>
+                <p>Ensure you log out securely after managing the system:</p>
+                <a href="logout.php" class="btn">Logout</a>
+            </section>
+        </div>
     </div>
+
     <!-- Footer -->
-        <footer>
-        <!-- Include footer part -->
+    <footer>
         <?php include 'include/footer.php'; ?>
 
         <p class="main-acknowledgement"><strong>Acknowledgement</strong></p>
@@ -42,4 +65,3 @@
     <?php include 'include/bckToTopBtn.php'; ?>
 </body>
 </html>
-

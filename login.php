@@ -13,86 +13,79 @@
 
     <link rel="stylesheet" type="text/css" href="style/style.css">
 </head>
-
 <body>
-    <!-- Include header Part -->
+    <!-- Include Header -->
     <?php include 'include/header.php'; ?>
 
-    <!-- Login Session Part -->
+    <!-- Login Session -->
     <?php
-        if (session_status() == PHP_SESSION_NONE) {
-            session_start();
-        }
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
 
-        include 'connection.php';
-        include 'database.php'; // Ensure database.php is included
+    include 'connection.php';
+    include 'database.php';
 
-        // Reconnect to the database for further operations
-        $conn = new mysqli($servername, $username, $password, $dbname);
-        if ($conn->connect_error) {
-            error_log("Connection failed: " . $conn->connect_error);
-            die("Connection failed: " . $conn->connect_error);
-        }
+    // Reconnect to the database for further operations
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    if ($conn->connect_error) {
+        error_log("Connection failed: " . $conn->connect_error);
+        die("Connection failed: " . $conn->connect_error);
+    }
 
-        $error = '';
-        $success = '';
+    $error = '';
+    $success = '';
 
-        // Check if the user is already logged in
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $email = $_POST['email'] ?? '';
-            $password = $_POST['password'] ?? '';
+    // Handle login submission
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $email = trim($_POST['email'] ?? '');
+        $password = trim($_POST['password'] ?? '');
 
-            if (empty($email) || empty($password)) {
-                $error = "Please fill in all fields.";
+        if (empty($email) || empty($password)) {
+            $error = "Please fill in all fields.";
+        } else {
+            // Admin login
+            if ($email === 'admin' && $password === 'admin') {
+                $_SESSION['username'] = 'admin';
+                session_regenerate_id();
+                header("Location: view_admin.php");
+                exit();
             } else {
-                // Check if the user is an admin (username without @)
-                if ($email === 'admin' && $password === 'admin') {
-                    $_SESSION['username'] = 'admin';
-                    session_regenerate_id(); // Regenerate session ID to prevent session fixation
-                    header("Location: view_admin.php");
-                    exit();
-                } else {
-                    // Check if the user is a registered user
-                    $query = "SELECT * FROM registeredUsers WHERE email = ?";
-                    $stmt = $conn->prepare($query);
-                    if (!$stmt) {
-                        error_log("Prepare failed: " . $conn->error);
-                    } else {
-                        $stmt->bind_param("s", $email); // Bind email for registered users
-                        $stmt->execute();
-                        $result = $stmt->get_result();
+                // User login
+                $query = "SELECT * FROM registeredUsers WHERE email = ?";
+                $stmt = $conn->prepare($query);
 
-                        if ($result->num_rows > 0) {
-                            $user = $result->fetch_assoc();
-                            // Debugging statement
-                            error_log("User password hash: " . $user['password']);
-                            if (password_verify($password, $user['password'])) {
-                                $_SESSION['user_id'] = $user['userID'];
-                                $_SESSION['user_email'] = $user['email'];
-                                session_regenerate_id(); // Regenerate session ID to prevent session fixation
-                                $success = "You are now logged in.";
-                                header("Location: user_dashboard.php"); // Redirect after login
-                                exit();
-                            } else {
-                                error_log("User password verification failed.");
-                                $error = "Invalid password.";
-                            }
+                if ($stmt) {
+                    $stmt->bind_param("s", $email);
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+
+                    if ($result->num_rows > 0) {
+                        $user = $result->fetch_assoc();
+                        if (password_verify($password, $user['password'])) {
+                            $_SESSION['user_id'] = $user['userID'];
+                            $_SESSION['user_email'] = $user['email'];
+                            session_regenerate_id();
+                            header("Location: user_dashboard.php");
+                            exit();
                         } else {
-                            $error = "No user found with this email.";
+                            $error = "Invalid password.";
                         }
+                    } else {
+                        $error = "No account found with that email.";
                     }
                     $stmt->close();
+                } else {
+                    $error = "Database error: Unable to process your request.";
                 }
             }
         }
+    }
 
-        // Ensure the connection is only closed once
-        if ($conn) {
-            $conn->close();
-        }
+    $conn->close();
     ?>
 
-    <!-- Login Session Part -->
+    <!-- Login Form -->
     <main class="login__wrapper container">
         <article class="login__container">
             <h1>Login</h1>
@@ -103,9 +96,7 @@
 
             <?php if (!empty($success)): ?>
                 <p class="success"><?php echo htmlspecialchars($success); ?></p>
-                <p><a href="change_password.php">Change Password</a> | <a href="delete_account.php">Delete Account</a></p>
             <?php else: ?>
-
                 <form action="#" class="login__form" method="post">
                     <fieldset>
                         <legend>Welcome back to Leafly</legend>
@@ -113,15 +104,12 @@
                             <label for="email">Email</label>
                             <input type="text" placeholder="Enter your username or email" id="email" name="email" required>
                         </div>
-
                         <div class="login__input-box">
                             <label for="password">Password</label>
                             <input type="password" placeholder="Enter your password" id="password" name="password" maxlength="25" minlength="1" required>
                         </div>
-                    </fieldset>     
-
+                    </fieldset>
                     <input class="submit__btn btn" type="submit" value="Login">
-
                     <p>Don't have an account? <a class="register__link" href="registration.php">Register Here</a></p>
                     <p><a class="forgot__link" href="change_password.php">Forgot Password?</a></p>
                 </form>
@@ -129,11 +117,9 @@
         </article>
     </main>
 
-    <!-- Footer Part -->
+    <!-- Footer -->
     <footer>
-        <!-- Include footer part -->
         <?php include 'include/footer.php'; ?>
-
         <p class="main-acknowledgement"><strong>Acknowledgement</strong></p>
         <div class="footer__acknowledgement-wrapper">
             <a target="_blank" class="footer__acknowledgement-link" href="https://youtu.be/hlwlM4a5rxg?si=U6d04DrWrHZOTRda">Login Form Tutorial</a>

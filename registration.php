@@ -2,6 +2,7 @@
 <?php
     //include database connection 
     include 'database.php';
+    include 'connection.php'; // Ensure this includes the correct connection variable
     //initialize variables to store error messages
     $fnameError = $lnameError = $emailError = $passwordError = "";
     $fname = $lname = $email = $password = "";
@@ -47,7 +48,7 @@
             }else{
                 echo "Error: " . $sql . "<br>" . mysqli_error($conn);
             }
-            mysqli_close($conn);
+            mysqli_close($conn); // Ensure this is the correct connection variable
             exit();
         }
     }
@@ -94,12 +95,12 @@ function test_input($data){
                     <legend>Welcome to Leafly</legend>
                     <div class="registration__input-box">
                         <label for="fname">First Name</label>
-                        <input type="text" placeholder="Enter your first name" id="fname" name="fname" maxlength="25" minlength="1" required="required" pattern="[a-zA-Z]">
+                        <input type="text" placeholder="Enter your first name" id="fname" name="fname" maxlength="25" minlength="1" required="required" pattern="[a-zA-Z]+">
                     </div>
                     
                     <div class="registration__input-box">
                         <label for="lname">Last Name</label>
-                        <input type="text" placeholder="Enter your last name" id="lname" name="lname" maxlength="25" minlength="1" required="required" pattern="[a-zA-Z]">
+                        <input type="text" placeholder="Enter your last name" id="lname" name="lname" maxlength="25" minlength="1" required="required" pattern="[a-zA-Z]+">
                     </div>
         
                     <div class="registration__input-box">
