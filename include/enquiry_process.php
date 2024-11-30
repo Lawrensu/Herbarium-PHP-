@@ -1,41 +1,44 @@
 <?php
-include 'connection.php';
-session_start();
+include '../connection.php';
 
-// Retrieve form data from the session
-$form_data = $_SESSION['form_data'];
+// Check if the form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Retrieve form data
+    $fname = $_POST['fname'];
+    $lname = $_POST['lname'];
+    $email = $_POST['email'];
+    $contact = $_POST['contact'];
+    $street = $_POST['street'];
+    $city = $_POST['city'];
+    $state = $_POST['state'];
+    $postcode = $_POST['postcode'];
+    $category = $_POST['category'];
 
-// Extract form data
-$fname = $form_data['fname'];
-$lname = $form_data['lname'];
-$email = $form_data['email'];
-$contact = $form_data['contact'];
-$street = $form_data['street'];
-$city = $form_data['city'];
-$state = $form_data['state'];
-$postcode = $form_data['postcode'];
-$category = $form_data['category'];
+    // Insert data into the database using prepared statements to prevent SQL injection
+    $sql = "INSERT INTO userEnquiry (fname, lname, email, contact, street, city, state, postcode, category) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-// Insert data into the database using prepared statements to prevent SQL injection
-$sql = "INSERT INTO userEnquiry (fname, lname, email, contact, street, city, state, postcode, category) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
-if ($stmt = $conn->prepare($sql)) {
-    $stmt->bind_param("sssssssss", $fname, $lname, $email, $contact, $street, $city, $state, $postcode, $category);
-    
-    // Execute the statement
-    if ($stmt->execute()) {
-        $_SESSION['success'] = 'Your enquiry has been submitted successfully. We will get back to you soon.';
-        $_SESSION['submitted_data'] = $form_data; // Store the submitted data in the session
+    if ($stmt = $conn->prepare($sql)) {
+        $stmt->bind_param("sssssssss", $fname, $lname, $email, $contact, $street, $city, $state, $postcode, $category);
+        
+        // Execute the statement
+        if ($stmt->execute()) {
+            $success = 'Your enquiry has been submitted successfully. We will get back to you soon.';
+        } else {
+            $error = 'Error: ' . $stmt->error;
+        }
+        
+        // Close the statement
+        $stmt->close();
     } else {
-        $_SESSION['error'] = 'Error: ' . $stmt->error;
+        $error = 'Error: ' . $conn->error;
     }
-    
-    // Close the statement
-    $stmt->close();
-} else {
-    $_SESSION['error'] = 'Error: ' . $conn->error;
-}
 
-header("Location: ../enquiry_confirmation.php");
-exit();
+    // Redirect to the confirmation page with success or error message
+    header("Location: ../enquiry_confirmation.php?success=" . urlencode($success) . "&error=" . urlencode($error));
+    exit();
+} else {
+    // Redirect to the enquiry form if the request method is not POST
+    header("Location: ../enquiry.php");
+    exit();
+}
 ?>

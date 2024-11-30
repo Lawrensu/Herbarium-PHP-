@@ -45,7 +45,6 @@
         city VARCHAR(20) NOT NULL,
         state TEXT,
         postcode INT(5) NOT NULL,
-        phonenumber INT(10) NOT NULL,
         category TEXT
     )";
 

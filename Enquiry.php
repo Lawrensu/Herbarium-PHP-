@@ -25,9 +25,6 @@
                 <h1>Enquiry Form</h1>
 
                 <?php
-                if (session_status() == PHP_SESSION_NONE) {
-                    session_start();
-                }
                 $errors = [];
 
                 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -101,21 +98,12 @@
                     }
 
                     if (empty($errors)) {
-                        // Store the form data in the session and redirect to the process page
-                        $_SESSION['form_data'] = $_POST;
+                        // Redirect to the process page
                         header("Location: include/enquiry_process.php");
                         exit();
                     }
                 }
 
-                if (isset($_SESSION['error'])) {
-                    echo '<p style="color: red;">' . htmlspecialchars($_SESSION['error']) . '</p>';
-                    unset($_SESSION['error']);
-                }
-                if (isset($_SESSION['success'])) {
-                    echo '<p style="color: green;">' . htmlspecialchars($_SESSION['success']) . '</p>';
-                    unset($_SESSION['success']);
-                }
                 if (!empty($errors)) {
                     echo '<div class="error-messages">';
                     foreach ($errors as $error) {

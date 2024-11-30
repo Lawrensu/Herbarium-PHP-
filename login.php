@@ -36,34 +36,70 @@
     $error = '';
     $success = '';
 
-    // Check if the user is already logged in
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $identifier = $_POST['identifier'] ?? '';
-        $password = $_POST['password'] ?? '';
+<<<<<<< HEAD
+    // Handle login submission
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $email = trim($_POST['email'] ?? '');
+        $password = trim($_POST['password'] ?? '');
 
-        if (empty($identifier) || empty($password)) {
+        if (empty($email) || empty($password)) {
             $error = "Please fill in all fields.";
         } else {
-            // Check if the user is an admin (username without @)
-            if ($identifier === 'admin' && $password === 'admin') {
+            // Admin login
+            if ($email === 'admin' && $password === 'admin') {
                 $_SESSION['username'] = 'admin';
-                session_regenerate_id(); // Regenerate session ID to prevent session fixation
+                session_regenerate_id();
                 header("Location: view_admin.php");
                 exit();
             } else {
-                // Check if the user is a registered user (must be an email)
-                if (filter_var($identifier, FILTER_VALIDATE_EMAIL)) {
-                    $query = "SELECT * FROM registeredUsers WHERE email = ?";
+                // User login
+                $query = "SELECT * FROM registeredUsers WHERE email = ?";
+                $stmt = $conn->prepare($query);
+
+                if ($stmt) {
+                    $stmt->bind_param("s", $email);
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+
+                    if ($result->num_rows > 0) {
+                        $user = $result->fetch_assoc();
+                        if (password_verify($password, $user['password'])) {
+                            $_SESSION['user_id'] = $user['userID'];
+                            $_SESSION['user_email'] = $user['email'];
+                            session_regenerate_id();
+                            header("Location: user_dashboard.php");
+                            exit();
+                        } else {
+                            $error = "Invalid password.";
+=======
+        // Check if the user is already logged in
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $identifier = $_POST['identifier'] ?? '';
+            $password = $_POST['password'] ?? '';
+
+            if (empty($identifier) || empty($password)) {
+                $error = "Please fill in all fields.";
+            } else {
+                // Check if the user is an admin (username without @)
+                if ($identifier === 'admin' && $password === 'admin') {
+                    $_SESSION['username'] = 'admin';
+                    session_regenerate_id(); // Regenerate session ID to prevent session fixation
+                    header("Location: view_admin.php");
+                    exit();
+                } else {
+                    // Check if the user is a registered user
+                    $query = "SELECT * FROM registeredUsers WHERE username = ? OR email = ?";
                     $stmt = $conn->prepare($query);
                     if (!$stmt) {
                         error_log("Prepare failed: " . $conn->error);
                     } else {
-                        $stmt->bind_param("s", $identifier); // Bind email for registered users
+                        $stmt->bind_param("ss", $identifier, $identifier); // Bind username or email for registered users
                         $stmt->execute();
                         $result = $stmt->get_result();
 
                         if ($result->num_rows > 0) {
                             $user = $result->fetch_assoc();
+                            // Debugging statement
                             error_log("User password: " . $user['password']);
                             if ($password === $user['password']) { // Compare plain text passwords
                                 $_SESSION['user_id'] = $user['userID'];
@@ -78,12 +114,15 @@
                                 $error = "Invalid password.";
                             }
                         } else {
-                            $error = "No user found with this email.";
+                            $error = "No user found with this username or email.";
+>>>>>>> 588012389f739c900ff79d3b48f1adff9cd9b6e6
                         }
-                        $stmt->close();
+                    } else {
+                        $error = "No account found with that email.";
                     }
+                    $stmt->close();
                 } else {
-                    $error = "Invalid email format.";
+                    $error = "Database error: Unable to process your request.";
                 }
             }
         }
