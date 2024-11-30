@@ -20,75 +20,75 @@
 
     <!-- Login Session Part -->
     <?php
-session_start();
+        session_start();
 
-include 'connection.php';
-include 'database.php'; // Ensure database.php is included
+        include 'connection.php';
+        include 'database.php'; // Ensure database.php is included
 
-// Reconnect to the database for further operations
-$conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn->connect_error) {
-    error_log("Connection failed: " . $conn->connect_error);
-    die("Connection failed: " . $conn->connect_error);
-}
+        // Reconnect to the database for further operations
+        $conn = new mysqli($servername, $username, $password, $dbname);
+        if ($conn->connect_error) {
+            error_log("Connection failed: " . $conn->connect_error);
+            die("Connection failed: " . $conn->connect_error);
+        }
 
-$error = '';
-$success = '';
+        $error = '';
+        $success = '';
 
-// Check if the user is already logged in
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $email = $_POST['email'] ?? '';
-    $password = $_POST['password'] ?? '';
+        // Check if the user is already logged in
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $email = $_POST['email'] ?? '';
+            $password = $_POST['password'] ?? '';
 
-    if (empty($email) || empty($password)) {
-        $error = "Please fill in all fields.";
-    } else {
-        // Check if the user is an admin (username without @)
-        if ($email === 'admin' && $password === 'admin') {
-            $_SESSION['username'] = 'admin';
-            session_regenerate_id(); // Regenerate session ID to prevent session fixation
-            header("Location: view_admin.php");
-            exit();
-        } else {
-            // Check if the user is a registered user
-            $query = "SELECT * FROM registeredUsers WHERE email = ?";
-            $stmt = $conn->prepare($query);
-            if (!$stmt) {
-                error_log("Prepare failed: " . $conn->error);
+            if (empty($email) || empty($password)) {
+                $error = "Please fill in all fields.";
             } else {
-                $stmt->bind_param("s", $email); // Bind email for registered users
-                $stmt->execute();
-                $result = $stmt->get_result();
-
-                if ($result->num_rows > 0) {
-                    $user = $result->fetch_assoc();
-                    // Debugging statement
-                    error_log("User password hash: " . $user['password']);
-                    if (password_verify($password, $user['password'])) {
-                        $_SESSION['user_id'] = $user['userID'];
-                        $_SESSION['user_email'] = $user['email'];
-                        session_regenerate_id(); // Regenerate session ID to prevent session fixation
-                        $success = "You are now logged in.";
-                        header("Location: user_dashboard.php"); // Redirect after login
-                        exit();
-                    } else {
-                        error_log("User password verification failed.");
-                        $error = "Invalid password.";
-                    }
+                // Check if the user is an admin (username without @)
+                if ($email === 'admin' && $password === 'admin') {
+                    $_SESSION['username'] = 'admin';
+                    session_regenerate_id(); // Regenerate session ID to prevent session fixation
+                    header("Location: view_admin.php");
+                    exit();
                 } else {
-                    $error = "No user found with this email.";
+                    // Check if the user is a registered user
+                    $query = "SELECT * FROM registeredUsers WHERE email = ?";
+                    $stmt = $conn->prepare($query);
+                    if (!$stmt) {
+                        error_log("Prepare failed: " . $conn->error);
+                    } else {
+                        $stmt->bind_param("s", $email); // Bind email for registered users
+                        $stmt->execute();
+                        $result = $stmt->get_result();
+
+                        if ($result->num_rows > 0) {
+                            $user = $result->fetch_assoc();
+                            // Debugging statement
+                            error_log("User password hash: " . $user['password']);
+                            if (password_verify($password, $user['password'])) {
+                                $_SESSION['user_id'] = $user['userID'];
+                                $_SESSION['user_email'] = $user['email'];
+                                session_regenerate_id(); // Regenerate session ID to prevent session fixation
+                                $success = "You are now logged in.";
+                                header("Location: user_dashboard.php"); // Redirect after login
+                                exit();
+                            } else {
+                                error_log("User password verification failed.");
+                                $error = "Invalid password.";
+                            }
+                        } else {
+                            $error = "No user found with this email.";
+                        }
+                    }
+                    $stmt->close();
                 }
             }
-            $stmt->close();
         }
-    }
-}
 
-// Ensure the connection is only closed once
-if ($conn) {
-    $conn->close();
-}
-?>
+        // Ensure the connection is only closed once
+        if ($conn) {
+            $conn->close();
+        }
+    ?>
 
     <!-- Login Session Part -->
     <main class="login__wrapper container">
