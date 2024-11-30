@@ -1,5 +1,13 @@
-<!-- Error Checking -->
 <?php
+// Start the session if not already started
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+// Check if the user is logged in
+$isLoggedIn = isset($_SESSION['user_id']);
+
+// Error checking
 function validateFormData($postData, $fileData)
 {
     $errors = [];
@@ -46,16 +54,15 @@ function validateFormData($postData, $fileData)
 }
 
 // Usage example
+$errors = [];
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Validate the form data
     $errors = validateFormData($_POST, $_FILES);
 
-    if (!empty($errors)) {
-        // Display errors
-        foreach ($errors as $error) {
-            echo "<p style='color: red;'>$error</p>";
-        }
-        exit; // Stop further processing if errors exist
+    if (empty($errors)) {
+        // Proceed with form submission
+        header("Location: check_login.php");
+        exit(); 
     }
 }
 ?>
@@ -80,15 +87,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <!-- Including header part -->
     <?php include 'include/header.php'; ?>
 
-    <!-- Connect/Create the database -->
-    <?php include 'include/contribution_process.php'; ?>
-
     <main class="contribution__container container">
         <article class="contribution">
             <section class="contribution__wrapper">  
                 <h1>Contribute Plant Data</h1>
+
+                <?php if (!empty($errors)): ?>
+                    <div class="error-messages">
+                        <?php foreach ($errors as $error): ?>
+                            <p style="color: red;"><?php echo htmlspecialchars($error); ?></p>
+                        <?php endforeach; ?>
+                    </div>
+                <?php endif; ?>
                 
-                <form class="contribution__form" action="#" method="post" enctype="multipart/form-data">
+                <form class="contribution__form" action="contribution.php" method="post" enctype="multipart/form-data">
                     <fieldset>
                         <legend>Plant Information</legend>
                         <div class="contribution__text-box">

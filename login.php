@@ -20,7 +20,9 @@
 
     <!-- Login Session Part -->
     <?php
-        session_start();
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
 
         include 'connection.php';
         include 'database.php'; // Ensure database.php is included
