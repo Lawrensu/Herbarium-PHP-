@@ -8,28 +8,20 @@
     // create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
     // Check connection
-    if (!$conn) {
-        die("Connection failed: " . mysqli_connect_error());
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
     }
 
     // Tables creation
-
-    // Admin Table 
-    $sql = "CREATE TABLE IF NOT EXISTS admin (
-        username VARCHAR(25) NOT NULL UNIQUE,
-        password VARCHAR(255) NOT NULL
+    //Table of admin
+    $sql = "CREATE TABLE IF NOT EXISTS admin(
+        adminID INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        username VARCHAR(25) NOT NULL,
+        password VARCHAR(255) NOT NULL -- Ensure the password field can store hashed passwords
     )";
 
     mysqli_query($conn, $sql);
 
-    // Insert default admin credentials
-    $adminUsername = 'Admin';
-    $adminPassword = 'admin'; 
-
-    $sql = "INSERT INTO admin (username, password) VALUES ('$adminUsername', '$adminPassword')
-            ON DUPLICATE KEY UPDATE password='$adminPassword'";
-
-    mysqli_query($conn, $sql);  
 
     // Registration/Registered User table
     $sql = "CREATE TABLE IF NOT EXISTS registeredUsers (

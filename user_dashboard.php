@@ -11,6 +11,14 @@
     <title>User Dashboard</title>
 </head>
 <body>
+    <h1>User Dashboard</h1>
+    <p>Welcome User</p>
+    <p>Here you can view your contributions</p>
+    <ul>
+        <li><a href="view_contribute.php">View Contributions</a></li>
+    </ul>
+    <p><a href="logout.php">Logout</a></p>
+    
     
 </body>
 </html>

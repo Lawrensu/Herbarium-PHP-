@@ -1,3 +1,65 @@
+//error checking 
+<?php
+    //include database connection 
+    include 'database.php';
+    //initialize variables to store error messages
+    $fnameError = $lnameError = $emailError = $passwordError = "";
+    $fname = $lname = $email = $password = "";
+    //check if the form is submitted
+    if ($_SERVER["REQUEST_METHOD"]=="POST"){
+        $valid = true;
+
+        if (empty($_POST["fname"])){
+            $fnameError = "First name is required";
+            $valid = false;
+        }else{
+            $fname = test_input($_POST["fname"]);
+        }
+
+        if (empty($_POST["lname"])){
+            $lnameError = "Last name is required";
+            $valid = false;
+        }else{
+            $lname = test_input($_POST["lname"]);
+        }
+
+        if (empty($_POST["email"])){
+            $emailError = "Email is required";
+            $valid = false;
+        }else if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)){
+            $emailError = "Invalid email format";
+            $valid = false;
+        }else{
+            $email = test_input($_POST["email"]);
+        }
+
+        if (empty($_POST["password"])){
+            $passwordError = "Password is required";
+            $valid = false;
+        }else{
+            $password = test_input($_POST["password"]);
+        }
+
+        if ($valid){
+            $sql = "INSERT INTO registeredUsers (fname, lname, email, password) VALUES ('$fname', '$lname', '$email', '$password')";
+            if (mysqli_query($conn, $sql)){
+                echo "Registration successful!";
+            }else{
+                echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+            }
+            mysqli_close($conn);
+            exit();
+        }
+    }
+//function to clean up data
+function test_input($data){
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,7 +115,7 @@
     
                 <input class="submit__btn btn" type="submit" value="Register">
 
-                <p>Already have an account? <a class="login__link" href="login.html">Login Here</a></p>
+                <p>Already have an account? <a class="login__link" href="login.php">Login Here</a></p>
             </form>
         </div>
     </main>
