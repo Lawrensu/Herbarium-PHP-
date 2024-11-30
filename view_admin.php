@@ -8,25 +8,13 @@
     <meta name="keywords" content="admin, view, dashboard">
 
     <link rel="stylesheet" type="text/css" href="style/style.css">
+    <link rel="stylesheet" type="text/css" href="style/styles.css">
     <title>Admin View</title>
 </head>
 <body>
     <!-- Header -->
      <?php include 'include/header.php'; ?>
 
-    <!--search bar-->
-    <div class="search-bar">
-        <form action="search.php" method="POST">
-            <input type="text" name="search" placeholder="Search">
-            <button type="submit" name="submit-search">Search</button>
-        </form>
-
-    <!-- Sidebar -->
-    <div class="sidebar-admin">
-        <a href="user_dashboard.php">View Users</a>
-        <a href="view_enquiry.php">View Enquiries</a>
-        <a href="view_contribute.php">View Contributions</a>
-    </div>
     <!-- Main Content -->
     <div class="main-content-admin">
         <h1>Admin Dashboard</h1>
