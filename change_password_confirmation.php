@@ -5,23 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/svg+xml" href="images/constant/leaf.png">
 
-    <meta name="author" content="MeiYee">
-    <meta name="description" content="Leafly Registration Error">
-    <meta name="keywords" content="registration, error, Leafly, herbarium, plant preservation">
+    <meta name="author" content="Leafly Team">
+    <meta name="description" content="Password change confirmation.">
+    <meta name="keywords" content="password change, confirmation">
 
     <link rel="stylesheet" type="text/css" href="style/style.css">
 
-    <title>Registration Error - Leafly</title>
+    <title>Password Change Confirmation - Leafly</title>
 </head>
 <body>
     <!-- Including header part -->
     <?php include 'include/header.php'; ?>
 
-    <main class="error__wrapper container">
-        <div class="error__container">
-            <h1>Registration Error</h1>
-            <h3>You have missing/empty fields</h3>
-            <p>Please click this <a href="registration.php">link</a> to return to the registration page.</p>
+    <main class="confirmation__wrapper container">
+        <div class="confirmation__container">
+            <h1>Password Change Confirmation</h1>
+            <p>Your password has been changed successfully.</p>
+            <p><a href="user_dashboard.php" class="btn">Back to Dashboard</a></p>
         </div>
     </main>
 
@@ -32,7 +32,7 @@
 
         <p class="main-acknowledgement"><strong>Acknowledgement</strong></p>
         <div class="footer__acknowledgement-wrapper">
-            <a target="_blank" class="footer__acknowledgement-link" href="https://www.youtube.com/watch?v=moIHTT2XK9g">Registration Form</a>
+            <a target="_blank" class="footer__acknowledgement-link" href="https://www.youtube.com/watch?v=moIHTT2XK9g">Password Change Confirmation Tutorial</a>
             <a target="_blank" class="footer__acknowledgement-link" href="https://www.geeksforgeeks.org/gradient-borders/">Gradient Border Guide</a>
         </div>
     </footer>

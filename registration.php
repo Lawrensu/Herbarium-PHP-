@@ -1,5 +1,5 @@
-//error checking 
 <?php
+<<<<<<< HEAD
     //include database connection 
     include 'database.php';
     include 'connection.php'; // Ensure this includes the correct connection variable
@@ -9,21 +9,20 @@
     //check if the form is submitted
     if ($_SERVER["REQUEST_METHOD"]=="POST"){
         $valid = true;
+=======
+// Include database connection
+include 'connection.php';
+>>>>>>> 588012389f739c900ff79d3b48f1adff9cd9b6e6
 
-        if (empty($_POST["fname"])){
-            $fnameError = "First name is required";
-            $valid = false;
-        }else{
-            $fname = test_input($_POST["fname"]);
-        }
+// Initialize variables to store error messages
+$usernameError = $emailError = $passwordError = "";
+$username = $email = $password = "";
 
-        if (empty($_POST["lname"])){
-            $lnameError = "Last name is required";
-            $valid = false;
-        }else{
-            $lname = test_input($_POST["lname"]);
-        }
+// Check if the form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $valid = true;
 
+<<<<<<< HEAD
         if (empty($_POST["email"])){
             $emailError = "Email is required";
             $valid = false;
@@ -51,9 +50,62 @@
             mysqli_close($conn); // Ensure this is the correct connection variable
             exit();
         }
+=======
+    if (empty($_POST["username"])) {
+        $usernameError = "Username is required";
+        $valid = false;
+    } else {
+        $username = test_input($_POST["username"]);
+>>>>>>> 588012389f739c900ff79d3b48f1adff9cd9b6e6
     }
-//function to clean up data
-function test_input($data){
+
+    if (empty($_POST["email"])) {
+        $emailError = "Email is required";
+        $valid = false;
+    } else if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
+        $emailError = "Invalid email format";
+        $valid = false;
+    } else {
+        $email = test_input($_POST["email"]);
+    }
+
+    if (empty($_POST["password"])) {
+        $passwordError = "Password is required";
+        $valid = false;
+    } else {
+        $password = test_input($_POST["password"]);
+    }
+
+    if ($valid) {
+        // Ensure the database connection is open
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+
+        // Use prepared statements to prevent SQL injection
+        $stmt = $conn->prepare("INSERT INTO registeredUsers (username, email, password) VALUES (?, ?, ?)");
+        if ($stmt === false) {
+            die("Prepare failed: " . $conn->error);
+        }
+
+        $stmt->bind_param("sss", $username, $email, $password);
+
+        if ($stmt->execute()) {
+            // Redirect to the confirmation page
+            header("Location: confirm_registration.php?username=" . urlencode($username) . "&email=" . urlencode($email));
+            exit();
+        } else {
+            echo "Error: " . $stmt->error;
+        }
+
+        $stmt->close();
+        $conn->close();
+        exit();
+    }
+}
+
+// Function to clean up data
+function test_input($data) {
     $data = trim($data);
     $data = stripslashes($data);
     $data = htmlspecialchars($data);
@@ -81,10 +133,6 @@ function test_input($data){
     <!-- Including header part -->
     <?php include 'include/header.php'; ?>
 
-    <!-- Connect/Create the database -->
-    <?php include 'connection.php'; ?>
-    <?php include 'database.php'; ?>
-
     <main class="registration__wrapper container">
         <div class="registration__container">
             <h1>Registration</h1>
@@ -94,6 +142,7 @@ function test_input($data){
                 <fieldset>
                     <legend>Welcome to Leafly</legend>
                     <div class="registration__input-box">
+<<<<<<< HEAD
                         <label for="fname">First Name</label>
                         <input type="text" placeholder="Enter your first name" id="fname" name="fname" maxlength="25" minlength="1" required="required" pattern="[a-zA-Z]+">
                     </div>
@@ -101,16 +150,23 @@ function test_input($data){
                     <div class="registration__input-box">
                         <label for="lname">Last Name</label>
                         <input type="text" placeholder="Enter your last name" id="lname" name="lname" maxlength="25" minlength="1" required="required" pattern="[a-zA-Z]+">
+=======
+                        <label for="username">Username</label>
+                        <input type="text" placeholder="Enter your username" id="username" name="username" maxlength="25" minlength="1" required="required" pattern="[a-zA-Z]+" value="<?php echo htmlspecialchars($username); ?>">
+                        <span class="error"><?php echo $usernameError; ?></span>
+>>>>>>> 588012389f739c900ff79d3b48f1adff9cd9b6e6
                     </div>
         
                     <div class="registration__input-box">
                         <label for="email">Email</label>
-                        <input type="email" placeholder="Enter your email" id="email" name="email" required>
+                        <input type="email" placeholder="Enter your email" id="email" name="email" required value="<?php echo htmlspecialchars($email); ?>">
+                        <span class="error"><?php echo $emailError; ?></span>
                     </div>
         
                     <div class="registration__input-box">
                         <label for="password">Password</label>
-                        <input type="password" placeholder="Enter your password" id="password" name="password" maxlength="25" minlength="1" required="required">
+                        <input type="password" placeholder="Enter your password" id="password" name="password" maxlength="25" minlength="1" required="required" value="<?php echo htmlspecialchars($password); ?>">
+                        <span class="error"><?php echo $passwordError; ?></span>
                     </div>
                 </fieldset>
     

@@ -36,6 +36,7 @@
     $error = '';
     $success = '';
 
+<<<<<<< HEAD
     // Handle login submission
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $email = trim($_POST['email'] ?? '');
@@ -70,6 +71,51 @@
                             exit();
                         } else {
                             $error = "Invalid password.";
+=======
+        // Check if the user is already logged in
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $identifier = $_POST['identifier'] ?? '';
+            $password = $_POST['password'] ?? '';
+
+            if (empty($identifier) || empty($password)) {
+                $error = "Please fill in all fields.";
+            } else {
+                // Check if the user is an admin (username without @)
+                if ($identifier === 'admin' && $password === 'admin') {
+                    $_SESSION['username'] = 'admin';
+                    session_regenerate_id(); // Regenerate session ID to prevent session fixation
+                    header("Location: view_admin.php");
+                    exit();
+                } else {
+                    // Check if the user is a registered user
+                    $query = "SELECT * FROM registeredUsers WHERE username = ? OR email = ?";
+                    $stmt = $conn->prepare($query);
+                    if (!$stmt) {
+                        error_log("Prepare failed: " . $conn->error);
+                    } else {
+                        $stmt->bind_param("ss", $identifier, $identifier); // Bind username or email for registered users
+                        $stmt->execute();
+                        $result = $stmt->get_result();
+
+                        if ($result->num_rows > 0) {
+                            $user = $result->fetch_assoc();
+                            // Debugging statement
+                            error_log("User password: " . $user['password']);
+                            if ($password === $user['password']) { // Compare plain text passwords
+                                $_SESSION['user_id'] = $user['userID'];
+                                $_SESSION['username'] = $user['username'];
+                                $_SESSION['user_email'] = $user['email'];
+                                session_regenerate_id(); // Regenerate session ID to prevent session fixation
+                                $success = "You are now logged in.";
+                                header("Location: user_dashboard.php"); // Redirect after login
+                                exit();
+                            } else {
+                                error_log("User password verification failed.");
+                                $error = "Invalid password.";
+                            }
+                        } else {
+                            $error = "No user found with this username or email.";
+>>>>>>> 588012389f739c900ff79d3b48f1adff9cd9b6e6
                         }
                     } else {
                         $error = "No account found with that email.";
@@ -101,8 +147,8 @@
                     <fieldset>
                         <legend>Welcome back to Leafly</legend>
                         <div class="login__input-box">
-                            <label for="email">Email</label>
-                            <input type="text" placeholder="Enter your username or email" id="email" name="email" required>
+                            <label for="identifier">Username or Email</label>
+                            <input type="text" placeholder="Enter your username or email" id="identifier" name="identifier" required>
                         </div>
                         <div class="login__input-box">
                             <label for="password">Password</label>

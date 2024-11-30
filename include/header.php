@@ -62,9 +62,9 @@ if (session_status() == PHP_SESSION_NONE) {
                 </a>
                 <div class="index__dropdown-login">
                     <?php if ($_SESSION['username'] === 'admin'): ?>
-                        <a href="view_admin.php">Dashboard</a>
+                        <a href="view_admin.php">Admin Dashboard</a>
                     <?php else: ?>
-                        <a href="profile.php">Profile</a>
+                        <a href="user_dashboard.php">Profile</a>
                     <?php endif; ?>
                     <a href="logout.php">Logout</a>
                 </div>

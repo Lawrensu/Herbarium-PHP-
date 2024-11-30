@@ -2,16 +2,21 @@
 include 'connection.php';
 include 'database.php';
 
+// Create a new connection to the database
 $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
 $username = 'admin';
-$password = password_hash('admin', PASSWORD_DEFAULT); // Hash the password
+$password = 'admin'; 
 
 $sql = "INSERT INTO admin (username, password) VALUES (?, ?)";
 $stmt = $conn->prepare($sql);
+if ($stmt === false) {
+    die("Prepare failed: " . $conn->error);
+}
+
 $stmt->bind_param("ss", $username, $password);
 $stmt->execute();
 
