@@ -1,58 +1,75 @@
-//error checking 
 <?php
-    //include database connection 
-    include 'database.php';
-    //initialize variables to store error messages
-    $fnameError = $lnameError = $emailError = $passwordError = "";
-    $fname = $lname = $email = $password = "";
-    //check if the form is submitted
-    if ($_SERVER["REQUEST_METHOD"]=="POST"){
-        $valid = true;
+// Include database connection
+include 'database.php';
 
-        if (empty($_POST["fname"])){
-            $fnameError = "First name is required";
-            $valid = false;
-        }else{
-            $fname = test_input($_POST["fname"]);
-        }
+// Initialize variables to store error messages
+$fnameError = $lnameError = $emailError = $passwordError = "";
+$fname = $lname = $email = $password = "";
 
-        if (empty($_POST["lname"])){
-            $lnameError = "Last name is required";
-            $valid = false;
-        }else{
-            $lname = test_input($_POST["lname"]);
-        }
+// Check if the form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $valid = true;
 
-        if (empty($_POST["email"])){
-            $emailError = "Email is required";
-            $valid = false;
-        }else if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)){
-            $emailError = "Invalid email format";
-            $valid = false;
-        }else{
-            $email = test_input($_POST["email"]);
-        }
-
-        if (empty($_POST["password"])){
-            $passwordError = "Password is required";
-            $valid = false;
-        }else{
-            $password = test_input($_POST["password"]);
-        }
-
-        if ($valid){
-            $sql = "INSERT INTO registeredUsers (fname, lname, email, password) VALUES ('$fname', '$lname', '$email', '$password')";
-            if (mysqli_query($conn, $sql)){
-                echo "Registration successful!";
-            }else{
-                echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-            }
-            mysqli_close($conn);
-            exit();
-        }
+    if (empty($_POST["fname"])) {
+        $fnameError = "First name is required";
+        $valid = false;
+    } else {
+        $fname = test_input($_POST["fname"]);
     }
-//function to clean up data
-function test_input($data){
+
+    if (empty($_POST["lname"])) {
+        $lnameError = "Last name is required";
+        $valid = false;
+    } else {
+        $lname = test_input($_POST["lname"]);
+    }
+
+    if (empty($_POST["email"])) {
+        $emailError = "Email is required";
+        $valid = false;
+    } else if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
+        $emailError = "Invalid email format";
+        $valid = false;
+    } else {
+        $email = test_input($_POST["email"]);
+    }
+
+    if (empty($_POST["password"])) {
+        $passwordError = "Password is required";
+        $valid = false;
+    } else {
+        $password = test_input($_POST["password"]);
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT); // Hash the password
+    }
+
+    if ($valid) {
+        // Ensure the database connection is open
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+
+        // Use prepared statements to prevent SQL injection
+        $stmt = $conn->prepare("INSERT INTO registeredUsers (fname, lname, email, password) VALUES (?, ?, ?, ?)");
+        if ($stmt === false) {
+            die("Prepare failed: " . $conn->error);
+        }
+
+        $stmt->bind_param("ssss", $fname, $lname, $email, $hashed_password);
+
+        if ($stmt->execute()) {
+            echo "Registration successful!";
+        } else {
+            echo "Error: " . $stmt->error;
+        }
+
+        $stmt->close();
+        $conn->close();
+        exit();
+    }
+}
+
+// Function to clean up data
+function test_input($data) {
     $data = trim($data);
     $data = stripslashes($data);
     $data = htmlspecialchars($data);
@@ -80,10 +97,6 @@ function test_input($data){
     <!-- Including header part -->
     <?php include 'include/header.php'; ?>
 
-    <!-- Connect/Create the database -->
-    <?php include 'connection.php'; ?>
-    <?php include 'database.php'; ?>
-
     <main class="registration__wrapper container">
         <div class="registration__container">
             <h1>Registration</h1>
@@ -94,22 +107,26 @@ function test_input($data){
                     <legend>Welcome to Leafly</legend>
                     <div class="registration__input-box">
                         <label for="fname">First Name</label>
-                        <input type="text" placeholder="Enter your first name" id="fname" name="fname" maxlength="25" minlength="1" required="required" pattern="[a-zA-Z]">
+                        <input type="text" placeholder="Enter your first name" id="fname" name="fname" maxlength="25" minlength="1" required="required" pattern="[a-zA-Z]+" value="<?php echo htmlspecialchars($fname); ?>">
+                        <span class="error"><?php echo $fnameError; ?></span>
                     </div>
                     
                     <div class="registration__input-box">
                         <label for="lname">Last Name</label>
-                        <input type="text" placeholder="Enter your last name" id="lname" name="lname" maxlength="25" minlength="1" required="required" pattern="[a-zA-Z]">
+                        <input type="text" placeholder="Enter your last name" id="lname" name="lname" maxlength="25" minlength="1" required="required" pattern="[a-zA-Z]+" value="<?php echo htmlspecialchars($lname); ?>">
+                        <span class="error"><?php echo $lnameError; ?></span>
                     </div>
         
                     <div class="registration__input-box">
                         <label for="email">Email</label>
-                        <input type="email" placeholder="Enter your email" id="email" name="email" required>
+                        <input type="email" placeholder="Enter your email" id="email" name="email" required value="<?php echo htmlspecialchars($email); ?>">
+                        <span class="error"><?php echo $emailError; ?></span>
                     </div>
         
                     <div class="registration__input-box">
                         <label for="password">Password</label>
-                        <input type="password" placeholder="Enter your password" id="password" name="password" maxlength="25" minlength="1" required="required">
+                        <input type="password" placeholder="Enter your password" id="password" name="password" maxlength="25" minlength="1" required="required" value="<?php echo htmlspecialchars($password); ?>">
+                        <span class="error"><?php echo $passwordError; ?></span>
                     </div>
                 </fieldset>
     

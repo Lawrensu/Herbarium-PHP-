@@ -18,53 +18,112 @@
    <!-- Including header part -->
    <?php include 'include/header.php'; ?>
 
-   <!-- Connect/Create the database -->
-   <?php include 'connection.php'; ?>
-
-   <!--Check if the form is submitted -->
-   <?php if ($_SERVER["REQUEST_METHOD"] == "POST")  {
-        //Retrieve form data
-        $fname = $_POST['fname'];
-        $lname = $_POST['lname'];
-        $email = $_POST['email'];
-        $contact = $_POST['contact'];
-        $street = $_POST['street'];
-        $city = $_POST['city'];
-        $state = $_POST['state'];
-        $postcode = $_POST['postcode'];
-        $category = $_POST['category'];
-
-        // Validate form data
-        if (empty($fname) || empty($lname) || empty($email) || empty($contact) || empty($street) || empty($city) || empty($state) || empty($postcode) || empty($category)) {
-            echo "<script>alert('Please fill in all the fields.')</script>";
-        } else {
-            // Insert data into the database using prepared statements to prevent SQL injection
-            $sql = "INSERT INTO userEnquiry (fname, lname, email, contact, street, city, state, postcode, category) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-            
-            if ($stmt = $conn->prepare($sql)) {
-                $stmt->bind_param("sssssssss", $fname, $lname, $email, $contact, $street, $city, $state, $postcode, $category);
-                
-                // Execute the statement
-                if ($stmt->execute()) {
-                    echo "<script>alert('Your enquiry has been submitted successfully. We will get back to you soon.')</script>";
-                } else {
-                    echo "<script>alert('Error: " . $stmt->error . "')</script>";
-                }
-                
-                // Close the statement
-                $stmt->close();
-            } else {
-                echo "<script>alert('Error: " . $conn->error . "')</script>";
-            }
-        }
-    }
-    ?>
-
-    <main class="enquiry__wrapper container">
+   <main class="enquiry__wrapper container">
      <article class="enquiry">
-        <form class="enquiry__form" action="#" method="post">
+        <form class="enquiry__form" action="include/enquiry_process.php" method="post">
             <div class="enquiry__contact-box">
                 <h1>Enquiry Form</h1>
+
+                <?php
+                if (session_status() == PHP_SESSION_NONE) {
+                    session_start();
+                }
+                $errors = [];
+
+                if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                    // Example validation
+                    if (empty($_POST['fname'])) {
+                        $errors[] = 'First Name is required.';
+                    }
+
+                    if (empty($_POST['lname'])) {
+                        $errors[] = 'Last Name is required.';
+                    }
+
+                    if (empty($_POST['email'])) {
+                        $errors[] = 'Email is required.';
+                    }
+
+                    if (empty($_POST['contact'])) {
+                        $errors[] = 'Contact Number is required.';
+                    }
+
+                    if (empty($_POST['street'])) {
+                        $errors[] = 'Street Address is required.';
+                    }
+
+                    if (empty($_POST['city'])) {
+                        $errors[] = 'City/Town is required.';
+                    }
+
+                    if (empty($_POST['state'])) {
+                        $errors[] = 'State is required.';
+                    }
+
+                    if (empty($_POST['postcode'])) {
+                        $errors[] = 'Postcode is required.';
+                    }
+
+                    if (empty($_POST['category'])) {
+                        $errors[] = 'Category is required.';
+                    }
+
+                    if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+                        $errors[] = 'Invalid email address.';
+                    }
+
+                    if (!preg_match('/^[A-Za-z]{1,25}$/', $_POST['fname'])) {
+                        $errors[] = 'First name should contain only alphabetical characters and be up to 25 characters long.';
+                    }
+
+                    if (!preg_match('/^[A-Za-z]{1,25}$/', $_POST['lname'])) {
+                        $errors[] = 'Last name should contain only alphabetical characters and be up to 25 characters long.';
+                    }
+
+                    if (!preg_match('/^\d{10}$/', $_POST['contact'])) {
+                        $errors[] = 'Invalid contact number. It should be 10 digits long.';
+                    }
+
+                    if (!preg_match('/^[A-Za-z0-9\s,.-]{1,100}$/', $_POST['street'])) {
+                        $errors[] = 'Invalid street address.';
+                    }
+
+                    if (!preg_match('/^[A-Za-z\s]{1,50}$/', $_POST['city'])) {
+                        $errors[] = 'City/Town should contain only alphabetical characters and spaces.';
+                    }
+
+                    if (!preg_match('/^[A-Za-z\s]{1,50}$/', $_POST['state'])) {
+                        $errors[] = 'State should contain only alphabetical characters and spaces.';
+                    }
+
+                    if (!preg_match('/^\d{5}$/', $_POST['postcode'])) {
+                        $errors[] = 'Postcode should be exactly 5 digits long.';
+                    }
+
+                    if (empty($errors)) {
+                        // Store the form data in the session and redirect to the process page
+                        $_SESSION['form_data'] = $_POST;
+                        header("Location: include/enquiry_process.php");
+                        exit();
+                    }
+                }
+
+                if (isset($_SESSION['error'])) {
+                    echo '<p style="color: red;">' . htmlspecialchars($_SESSION['error']) . '</p>';
+                    unset($_SESSION['error']);
+                }
+                if (isset($_SESSION['success'])) {
+                    echo '<p style="color: green;">' . htmlspecialchars($_SESSION['success']) . '</p>';
+                    unset($_SESSION['success']);
+                }
+                if (!empty($errors)) {
+                    echo '<div class="error-messages">';
+                    foreach ($errors as $error) {
+                        echo '<p style="color: red;">' . htmlspecialchars($error) . '</p>';
+                    }
+                    echo '</div>';
+                }
+                ?>
         
                 <fieldset>
                     <legend>Demographic Information</legend>
