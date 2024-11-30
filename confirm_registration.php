@@ -22,50 +22,15 @@
         <div class="registration__container">
             <h1 id="confirm_title">Registration Confirmation</h1>
             <?php
-                $firstname = $_POST['fname'];
-                $lastname = $_POST['lname'];
-                $email = $_POST['email'];
-                $password = $_POST['password'];
-
-                // Insert data into the database
-                $servername = "localhost";
-                $username = "root";
-                $password = "";
-                $dbname = "Leafly_DB";
-
-                // Create connection
-                $conn = new mysqli($servername, $username, $password, $dbname);
-
-                // Check connection
-                if ($conn->connect_error) {
-                    die("Connection failed: " . $conn->connect_error);
-                }
-
-                if (empty($firstname) || empty($lastname) || empty($email) || empty($password)) {
-                    require 'error_registration.php';
-                    exit();
-                }
-
-                $sql = "INSERT INTO registeredUsers (fname, lname, email, password) VALUES (?, ?, ?, ?)";
-                $stmt = $conn->prepare($sql);
-                $stmt->bind_param("ssss", $firstname, $lastname, $email, $password);
-
-                if ($stmt->execute()) {
-                    echo "<p>Registered successfully</p>";
-                } else {
-                    echo "<p>Error: " . $stmt->error . "</p>";
-                }
-
-                $stmt->close();
-                $conn->close();
+                $username = htmlspecialchars($_GET['username']);
+                $email = htmlspecialchars($_GET['email']);
             ?>
 
             <form id="register">
                 <fieldset class="reg_fieldset">
                     <legend class="confirm_clegend">Registration Details</legend>
-                    <p class="form">Name: <?php echo htmlspecialchars($firstname) . " " . htmlspecialchars($lastname); ?></p>
-                    <p class="form">Email: <?php echo htmlspecialchars($email); ?></p>
-                    <p class="form">Password: <?php echo htmlspecialchars($password); ?></p>
+                    <p class="form">Username: <?php echo $username; ?></p>
+                    <p class="form">Email: <?php echo $email; ?></p>
                 </fieldset>
                 
                 <p>Thank you for registering with us!</p>

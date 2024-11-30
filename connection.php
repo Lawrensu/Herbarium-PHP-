@@ -1,19 +1,31 @@
 <?php
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "Leafly_DB";
 
-    // Create connection
-    $conn = mysqli_connect($servername, $username, $password);
+// Create connection
+$conn = new mysqli($servername, $username, $password);
 
-    // Check connection
-    if (!$conn) {
-        die("Connection failed: " . mysqli_connect_error());
-    }
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
-    // Create database
-    $sql = "CREATE DATABASE IF NOT EXISTS Leafly_DB";
+// Create database if it doesn't exist
+$sql = "CREATE DATABASE IF NOT EXISTS $dbname";
+if ($conn->query($sql) === FALSE) {
+    die("Error creating database: " . $conn->error);
+}
 
-    mysqli_query($conn, $sql);
-    mysqli_close($conn);
+// Close the initial connection
+$conn->close();
+
+// Reconnect to the newly created database
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 ?>

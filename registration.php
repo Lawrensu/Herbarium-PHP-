@@ -1,27 +1,20 @@
 <?php
 // Include database connection
-include 'database.php';
+include 'connection.php';
 
 // Initialize variables to store error messages
-$fnameError = $lnameError = $emailError = $passwordError = "";
-$fname = $lname = $email = $password = "";
+$usernameError = $emailError = $passwordError = "";
+$username = $email = $password = "";
 
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $valid = true;
 
-    if (empty($_POST["fname"])) {
-        $fnameError = "First name is required";
+    if (empty($_POST["username"])) {
+        $usernameError = "Username is required";
         $valid = false;
     } else {
-        $fname = test_input($_POST["fname"]);
-    }
-
-    if (empty($_POST["lname"])) {
-        $lnameError = "Last name is required";
-        $valid = false;
-    } else {
-        $lname = test_input($_POST["lname"]);
+        $username = test_input($_POST["username"]);
     }
 
     if (empty($_POST["email"])) {
@@ -39,7 +32,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $valid = false;
     } else {
         $password = test_input($_POST["password"]);
-        $hashed_password = password_hash($password, PASSWORD_DEFAULT); // Hash the password
     }
 
     if ($valid) {
@@ -49,15 +41,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         // Use prepared statements to prevent SQL injection
-        $stmt = $conn->prepare("INSERT INTO registeredUsers (fname, lname, email, password) VALUES (?, ?, ?, ?)");
+        $stmt = $conn->prepare("INSERT INTO registeredUsers (username, email, password) VALUES (?, ?, ?)");
         if ($stmt === false) {
             die("Prepare failed: " . $conn->error);
         }
 
-        $stmt->bind_param("ssss", $fname, $lname, $email, $hashed_password);
+        $stmt->bind_param("sss", $username, $email, $password);
 
         if ($stmt->execute()) {
-            echo "Registration successful!";
+            // Redirect to the confirmation page
+            header("Location: confirm_registration.php?username=" . urlencode($username) . "&email=" . urlencode($email));
+            exit();
         } else {
             echo "Error: " . $stmt->error;
         }
@@ -106,15 +100,9 @@ function test_input($data) {
                 <fieldset>
                     <legend>Welcome to Leafly</legend>
                     <div class="registration__input-box">
-                        <label for="fname">First Name</label>
-                        <input type="text" placeholder="Enter your first name" id="fname" name="fname" maxlength="25" minlength="1" required="required" pattern="[a-zA-Z]+" value="<?php echo htmlspecialchars($fname); ?>">
-                        <span class="error"><?php echo $fnameError; ?></span>
-                    </div>
-                    
-                    <div class="registration__input-box">
-                        <label for="lname">Last Name</label>
-                        <input type="text" placeholder="Enter your last name" id="lname" name="lname" maxlength="25" minlength="1" required="required" pattern="[a-zA-Z]+" value="<?php echo htmlspecialchars($lname); ?>">
-                        <span class="error"><?php echo $lnameError; ?></span>
+                        <label for="username">Username</label>
+                        <input type="text" placeholder="Enter your username" id="username" name="username" maxlength="25" minlength="1" required="required" pattern="[a-zA-Z]+" value="<?php echo htmlspecialchars($username); ?>">
+                        <span class="error"><?php echo $usernameError; ?></span>
                     </div>
         
                     <div class="registration__input-box">
