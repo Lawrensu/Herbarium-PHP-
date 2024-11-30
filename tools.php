@@ -16,7 +16,12 @@
 <body>
   <!-- Include header part -->
   <?php include 'include/header.php'; ?>
-
+  <?php
+    if (session_status() == PHP_SESSION_NONE) {
+      session_start();
+    }
+    $isLoggedIn = isset($_SESSION['user_id']);
+  ?>
  <main>
   <section class="tools__wrapper container" id="tools">
     <h2>Essential Tools for Herbarium</h2>
@@ -39,7 +44,11 @@
           <img src="images/tools_page/tools1.png" alt="Absorbent Paper">
           <figcaption>Used for drying and preserving the specimens.</figcaption>
         </figure>
-        <a class="btn" href="https://www.amazon.com/s?k=blotting+paper">Buy Now</a>
+        <?php if ($isLoggedIn): ?>
+          <a class="btn" href="https://www.amazon.com/s?k=blotting+paper">Buy Now</a>
+        <?php else: ?>
+          <a class="btn" href="login.php">Buy Now</a>
+        <?php endif; ?>
       </article>
 
       <!-- Tool 3 -->
@@ -49,7 +58,11 @@
           <img src="images/tools_page/tools2.png" alt="Wooden Board">
           <figcaption>These are essential for pressing the specimens (e.g., Wooden Boards).</figcaption>
         </figure>
-        <a class="btn" href="https://www.amazon.com/s?k=wooden+board">Buy Now</a>
+        <?php if ($isLoggedIn): ?>
+          <a class="btn" href="https://www.amazon.com/s?k=wooden+board">Buy Now</a>
+        <?php else: ?>
+          <a class="btn" href="login.php">Buy Now</a>
+        <?php endif; ?>
       </article>
 
       <!-- Tool 4 -->
@@ -59,7 +72,11 @@
           <img src="images/tools_page/tools3.png" alt="Weights or Straps">
           <figcaption>To apply pressure on the specimens during drying.</figcaption>
         </figure>
-        <a class="btn" href="https://www.amazon.com/s?k=weights+for+pressing">Buy Now</a>
+        <?php if ($isLoggedIn): ?>
+          <a class="btn" href="https://www.amazon.com/s?k=weights+for+pressing">Buy Now</a>
+        <?php else: ?>
+          <a class="btn" href="login.php">Buy Now</a>
+        <?php endif; ?>
       </article>
 
       <!-- Tool 5 -->
@@ -69,7 +86,11 @@
           <img src="images/tools_page/tools4.png" alt="Glue">
           <figcaption>Used for securing the dried specimens to the herbarium sheet.</figcaption>
         </figure>
-        <a class="btn" href="https://www.amazon.com/s?k=glue">Buy Now</a>
+        <?php if ($isLoggedIn): ?>
+          <a class="btn" href="https://www.amazon.com/s?k=glue">Buy Now</a>
+        <?php else: ?>
+          <a class="btn" href="login.php">Buy Now</a>
+        <?php endif; ?>
       </article>
 
       <!-- Tool 6 -->
@@ -79,7 +100,11 @@
           <img src="images/tools_page/tools5.png" alt="White Paper">
           <figcaption>The surface on which the specimens are mounted (e.g Sturdy White Paper)</figcaption>
         </figure>
-        <a class="btn" href="https://www.amazon.com/s?k=herbarium+sheet">Buy Now</a>
+        <?php if ($isLoggedIn): ?>
+          <a class="btn" href="https://www.amazon.com/s?k=herbarium+sheet">Buy Now</a>
+        <?php else: ?>
+          <a class="btn" href="login.php">Buy Now</a>
+        <?php endif; ?>
       </article>
 
       <!-- Tool 7 -->
@@ -89,7 +114,11 @@
           <img src="images/tools_page/tools6.png" alt="Pen">
           <figcaption>Essential for writing labels for each specimen and the description of it.</figcaption>
         </figure>  
-        <a class="btn" href="https://www.amazon.com/s?k=pen">Buy Now</a>
+        <?php if ($isLoggedIn): ?>
+          <a class="btn" href="https://www.amazon.com/s?k=pen">Buy Now</a>
+        <?php else: ?>
+          <a class="btn" href="login.php">Buy Now</a>
+        <?php endif; ?>
       </article>
 
       <!-- Tool 8 -->
@@ -99,7 +128,11 @@
           <img src="images/tools_page/tools7.png" alt="Herbarium Folder">
           <figcaption>For organizing and storing the finished herbarium sheets.</figcaption>
         </figure>  
-        <a class="btn" href="https://www.amazon.com/s?k=herbarium+cabinet">Buy Now</a>
+        <?php if ($isLoggedIn): ?>
+          <a class="btn" href="https://www.amazon.com/s?k=herbarium+cabinet">Buy Now</a>
+        <?php else: ?>
+          <a class="btn" href="login.php">Buy Now</a>
+        <?php endif; ?>
       </article>
     </div>
     </section>

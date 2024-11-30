@@ -56,9 +56,9 @@
 
         <p class="main-acknowledgement"><strong>Acknowledgement</strong></p>
         <div class="footer__acknowledgement-wrapper">
-            <a target="_blank" class="footer__acknowledgement-link" href="https://youtu.be/hlwlM4a5rxg?si=U6d04DrWrHZOTRda">Login Form Tutorial</a>
-            <a target="_blank" class="footer__acknowledgement-link" href="https://www.youtube.com/watch?v=zh1xus05Kl8&t=40sgit">Button Style</a>
-            <a target="_blank" class="footer__acknowledgement-link" href="https://www.geeksforgeeks.org/gradient-borders/">Gradient Border Guide</a>
+            <a target="_blank" class="footer__acknowledgement-link" href="#">Login Form Tutorial</a>
+            <a target="_blank" class="footer__acknowledgement-link" href="#">Button Style</a>
+            <a target="_blank" class="footer__acknowledgement-link" href="#">Gradient Border Guide</a>
         </div>
     </footer>
 

@@ -142,19 +142,9 @@ function test_input($data) {
                 <fieldset>
                     <legend>Welcome to Leafly</legend>
                     <div class="registration__input-box">
-<<<<<<< HEAD
-                        <label for="fname">First Name</label>
-                        <input type="text" placeholder="Enter your first name" id="fname" name="fname" maxlength="25" minlength="1" required="required" pattern="[a-zA-Z]+">
-                    </div>
-                    
-                    <div class="registration__input-box">
-                        <label for="lname">Last Name</label>
-                        <input type="text" placeholder="Enter your last name" id="lname" name="lname" maxlength="25" minlength="1" required="required" pattern="[a-zA-Z]+">
-=======
                         <label for="username">Username</label>
                         <input type="text" placeholder="Enter your username" id="username" name="username" maxlength="25" minlength="1" required="required" pattern="[a-zA-Z]+" value="<?php echo htmlspecialchars($username); ?>">
                         <span class="error"><?php echo $usernameError; ?></span>
->>>>>>> 588012389f739c900ff79d3b48f1adff9cd9b6e6
                     </div>
         
                     <div class="registration__input-box">
