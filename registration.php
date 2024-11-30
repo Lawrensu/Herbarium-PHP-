@@ -1,20 +1,8 @@
 <?php
-<<<<<<< HEAD
     //include database connection 
     include 'database.php';
     include 'connection.php'; // Ensure this includes the correct connection variable
-    //initialize variables to store error messages
-    $fnameError = $lnameError = $emailError = $passwordError = "";
-    $fname = $lname = $email = $password = "";
-    //check if the form is submitted
-    if ($_SERVER["REQUEST_METHOD"]=="POST"){
-        $valid = true;
-=======
-// Include database connection
-include 'connection.php';
->>>>>>> 588012389f739c900ff79d3b48f1adff9cd9b6e6
-
-// Initialize variables to store error messages
+    // Initialize variables to store error messages
 $usernameError = $emailError = $passwordError = "";
 $username = $email = $password = "";
 
@@ -22,41 +10,11 @@ $username = $email = $password = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $valid = true;
 
-<<<<<<< HEAD
-        if (empty($_POST["email"])){
-            $emailError = "Email is required";
-            $valid = false;
-        }else if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)){
-            $emailError = "Invalid email format";
-            $valid = false;
-        }else{
-            $email = test_input($_POST["email"]);
-        }
-
-        if (empty($_POST["password"])){
-            $passwordError = "Password is required";
-            $valid = false;
-        }else{
-            $password = test_input($_POST["password"]);
-        }
-
-        if ($valid){
-            $sql = "INSERT INTO registeredUsers (fname, lname, email, password) VALUES ('$fname', '$lname', '$email', '$password')";
-            if (mysqli_query($conn, $sql)){
-                echo "Registration successful!";
-            }else{
-                echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-            }
-            mysqli_close($conn); // Ensure this is the correct connection variable
-            exit();
-        }
-=======
     if (empty($_POST["username"])) {
         $usernameError = "Username is required";
         $valid = false;
     } else {
         $username = test_input($_POST["username"]);
->>>>>>> 588012389f739c900ff79d3b48f1adff9cd9b6e6
     }
 
     if (empty($_POST["email"])) {
@@ -142,19 +100,9 @@ function test_input($data) {
                 <fieldset>
                     <legend>Welcome to Leafly</legend>
                     <div class="registration__input-box">
-<<<<<<< HEAD
-                        <label for="fname">First Name</label>
-                        <input type="text" placeholder="Enter your first name" id="fname" name="fname" maxlength="25" minlength="1" required="required" pattern="[a-zA-Z]+">
-                    </div>
-                    
-                    <div class="registration__input-box">
-                        <label for="lname">Last Name</label>
-                        <input type="text" placeholder="Enter your last name" id="lname" name="lname" maxlength="25" minlength="1" required="required" pattern="[a-zA-Z]+">
-=======
                         <label for="username">Username</label>
                         <input type="text" placeholder="Enter your username" id="username" name="username" maxlength="25" minlength="1" required="required" pattern="[a-zA-Z]+" value="<?php echo htmlspecialchars($username); ?>">
                         <span class="error"><?php echo $usernameError; ?></span>
->>>>>>> 588012389f739c900ff79d3b48f1adff9cd9b6e6
                     </div>
         
                     <div class="registration__input-box">
