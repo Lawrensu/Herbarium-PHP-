@@ -22,45 +22,43 @@
    <?php include 'connection.php'; ?>
 
    <!--Check if the form is submitted -->
-   <?php if ($_SERVER["REQUEST_METHOD"] == "POST") 
-   {
-    //Retrieve form data
-    $fname = $_POST['fname'];
-    $lname = $_POST['lname'];
-    $email = $_POST['email'];
-    $contact = $_POST['contact'];
-    $street = $_POST['street'];
-    $city = $_POST['city'];
-    $state = $_POST['state'];
-    $postcode = $_POST['postcode'];
-    $category = $_POST['category'];
+   <?php if ($_SERVER["REQUEST_METHOD"] == "POST")  {
+        //Retrieve form data
+        $fname = $_POST['fname'];
+        $lname = $_POST['lname'];
+        $email = $_POST['email'];
+        $contact = $_POST['contact'];
+        $street = $_POST['street'];
+        $city = $_POST['city'];
+        $state = $_POST['state'];
+        $postcode = $_POST['postcode'];
+        $category = $_POST['category'];
 
-
-    // Validate form data (you can add more validation as needed)
-    if (empty($fname) || empty($lname) || empty($email) || empty($contact) || empty($street) || empty($city) || empty($state) || empty($postcode) || empty($category)) {
-        echo "<script>alert('Please fill in all the fields.')</script>";
-    } else 
-    
-    // Insert data into the database using prepared statements to prevent SQL injection
-        $sql = "INSERT INTO enquiry (fname, lname, email, contact, street, city, state, postcode, category) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        
-        if ($stmt = $conn->prepare($sql)) {
-            $stmt->bind_param("sssssssss", $fname, $lname, $email, $contact, $street, $city, $state, $postcode, $category);
-            
-            // Execute the statement
-            if ($stmt->execute()) {
-                echo "<script>alert('Your enquiry has been submitted successfully. We will get back to you soon.')</script>";
-            } else {
-                echo "<script>alert('Error: " . $stmt->error . "')</script>";
-            }
-            
-            // Close the statement
-            $stmt->close();
+        // Validate form data
+        if (empty($fname) || empty($lname) || empty($email) || empty($contact) || empty($street) || empty($city) || empty($state) || empty($postcode) || empty($category)) {
+            echo "<script>alert('Please fill in all the fields.')</script>";
         } else {
-            echo "<script>alert('Error: " . $conn->error . "')</script>";
+            // Insert data into the database using prepared statements to prevent SQL injection
+            $sql = "INSERT INTO userEnquiry (fname, lname, email, contact, street, city, state, postcode, category) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            
+            if ($stmt = $conn->prepare($sql)) {
+                $stmt->bind_param("sssssssss", $fname, $lname, $email, $contact, $street, $city, $state, $postcode, $category);
+                
+                // Execute the statement
+                if ($stmt->execute()) {
+                    echo "<script>alert('Your enquiry has been submitted successfully. We will get back to you soon.')</script>";
+                } else {
+                    echo "<script>alert('Error: " . $stmt->error . "')</script>";
+                }
+                
+                // Close the statement
+                $stmt->close();
+            } else {
+                echo "<script>alert('Error: " . $conn->error . "')</script>";
+            }
         }
     }
-?>
+    ?>
 
     <main class="enquiry__wrapper container">
      <article class="enquiry">
