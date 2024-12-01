@@ -2274,7 +2274,17 @@ legend {
 
 /* Admin Page */
 
+
 /* Main Content Styles */
+.bg-main div {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: #f7eaad;
+    min-height: 100vh;
+} 
+
 .main-content-admin {
     margin-left: 260px; /* Matches the width of the sidebar */
     padding: 2rem;
@@ -2283,9 +2293,10 @@ legend {
     border-left: 1px solid #f7eaad;
 }
 
+
 .main-content-admin h1 {
     font-size: 2rem;
-    color: #0066cc;
+    color: #f7eaad;
     margin-bottom: 1rem;
 }
 
