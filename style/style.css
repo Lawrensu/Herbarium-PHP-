@@ -2274,33 +2274,6 @@ legend {
 }
 
 /* Admin Page */
-
-/* Sidebar Styles */
-.sidebar-admin {
-    width: 250px;
-    background-color: #444;
-    color: white;
-    position: fixed;
-    height: 100vh;
-    padding: 1rem;
-    top: 0;
-    left: 0;
-    overflow-y: auto;
-}
-
-.sidebar-admin a {
-    display: block;
-    padding: 10px 15px;
-    color: white;
-    border-bottom: 1px solid #555;
-    text-decoration: none;
-    transition: background-color 0.3s ease-in-out;
-}
-
-.sidebar-admin a:hover {
-    background-color: #0066cc;
-}
-
 /* Main Content Styles */
 .main-content-admin {
     display: flex;
@@ -2364,7 +2337,134 @@ legend {
     margin: 0 auto;
 }
 
+
+/* VIEW USER PAGE */
+.view-users__main-content {
+    padding: 2rem;
+    background-color: var(--clr-light);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 0.4em;
+    margin: 2rem auto;
+    max-width: 90%;
+}
+
+/* Dashboard sections */
+.view-users__dashboard-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* User table wrapper */
+.view-users__table-wrapper {
+    overflow-x: auto;
+}
+
+/* User table */
+.view-users__user-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 1rem;
+    border-radius: 0.4em;
+    overflow: hidden;
+}
+
+.view-users__user-table th, .view-users__user-table td {
+    border: 1px solid var(--clr-dark);
+    padding: 0.5rem;
+    text-align: left;
+}
+
+.view-users__user-table th {
+    background-color: var(--clr-green);
+    color: var(--clr-light);
+}
+
+.view-users__user-table td {
+    background-color: var(--clr-light);
+}
+
+.view-users__btn {
+    background-color: var(--clr-orange);
+    color: var(--clr-light);
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    border-radius: 0.4em;
+    transition: background-color 0.3s ease;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+}
+
+.view-users__btn:hover {
+    background-color: var(--clr-dark);
+}
+
 /* View Enquiry */
+.view-enquiries__main-content {
+    padding: 2rem;
+    background-color: var(--clr-light);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 0.4em;
+    margin: 2rem auto;
+    max-width: 90%;
+}
+
+/* Dashboard sections */
+.view-enquiries__dashboard-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Enquiry table wrapper */
+.view-enquiries__table-wrapper {
+    overflow-x: auto;
+}
+
+/* Enquiry table */
+.view-enquiries__enquiry-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 1rem;
+    border-radius: 0.4em;
+    overflow: hidden;
+}
+
+.view-enquiries__enquiry-table th, .view-enquiries__enquiry-table td {
+    border: 1px solid var(--clr-dark);
+    padding: 0.5rem;
+    text-align: left;
+}
+
+.view-enquiries__enquiry-table th {
+    background-color: var(--clr-green);
+    color: var(--clr-light);
+}
+
+.view-enquiries__enquiry-table td {
+    background-color: var(--clr-light);
+}
+
+.view-enquiries__btn {
+    background-color: var(--clr-orange);
+    color: var(--clr-light);
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    border-radius: 0.4em;
+    transition: background-color 0.3s ease;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+}
+
+.view-enquiries__btn:hover {
+    background-color: var(--clr-dark);
+}
 
 
 /* View Contribute */
@@ -3126,6 +3226,63 @@ legend {
         width: 45em; 
         height: 30em; 
     }
+
+
+    /* View Users */
+    .view-users__main-content {
+        padding: 1rem;
+        margin: 1rem auto;
+    }
+
+    .view-users__user-table th, .view-users__user-table td {
+        padding: 0.25rem;
+    }
+
+    .view-users__btn {
+        padding: 0.25rem 0.5rem;
+        font-size: var(--size-sm);
+    }
+
+
+    /* View Enquiry */
+    .view-enquiries__main-content {
+        padding: 1rem;
+        margin: 1rem auto;
+    }
+
+    .view-enquiries__enquiry-table th, .view-enquiries__enquiry-table td {
+        padding: 0.25rem;
+    }
+
+    .view-enquiries__btn {
+        padding: 0.25rem 0.5rem;
+        font-size: var(--size-sm);
+    }
+
+    .view-enquiries__table-wrapper {
+        overflow-x: auto;
+    }
+
+    .view-enquiries__enquiry-table {
+        display: block;
+        width: 100%;
+    }
+
+    .view-enquiries__enquiry-table thead, .view-enquiries__enquiry-table tbody, .view-enquiries__enquiry-table th, .view-enquiries__enquiry-table td, .view-enquiries__enquiry-table tr {
+        display: block;
+    }
+
+    .view-enquiries__enquiry-table th, .view-enquiries__enquiry-table td {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .view-enquiries__enquiry-table tr {
+        margin-bottom: 0.5rem;
+    }
+    
+
+    /* View Contribution */
 
 }
    
