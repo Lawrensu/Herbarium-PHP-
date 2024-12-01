@@ -54,6 +54,12 @@
     <footer>
         <?php include 'include/footer.php'; ?>
 
+        <p class="main-acknowledgement"><strong>Acknowledgement</strong></p>
+        <div class="foo__acknowledgement-wrapper">
+            <a target="_blank" class="footer__acknowledgement-link" href="#">Login Form Tutorial</a>
+            <a target="_blank" class="footer__acknowledgement-link" href="#">Button Style</a>
+            <a target="_blank" class="footer__acknowledgement-link" href="#">Gradient Border Guide</a>
+        </div>
     </footer>
 
     <?php include 'include/bckToTopBtn.php'; ?>
