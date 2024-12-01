@@ -102,7 +102,7 @@
                     <fieldset>
                         <legend>Welcome back to Leafly</legend>
                         <div class="login__input-box">
-                            <label for="identifier">Username or Email</label>
+                            <label for="identifier">Email</label>
                             <input type="text" placeholder="Enter your username or email" id="identifier" name="identifier" required>
                         </div>
                         <div class="login__input-box">
