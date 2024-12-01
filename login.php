@@ -38,14 +38,14 @@
 
     // Handle login submission
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $email = trim($_POST['email'] ?? '');
+        $identifier = trim($_POST['identifier'] ?? '');
         $password = trim($_POST['password'] ?? '');
 
-        if (empty($email) || empty($password)) {
+        if (empty($identifier) || empty($password)) {
             $error = "Please fill in all fields.";
         } else {
             // Admin login
-            if ($email === 'admin' && $password === 'admin') {
+            if ($identifier === 'admin' && $password === 'admin') {
                 $_SESSION['username'] = 'admin';
                 session_regenerate_id();
                 header("Location: view_admin.php");
@@ -56,7 +56,7 @@
                 $stmt = $conn->prepare($query);
 
                 if ($stmt) {
-                    $stmt->bind_param("s", $email);
+                    $stmt->bind_param("s", $identifier);
                     $stmt->execute();
                     $result = $stmt->get_result();
 
