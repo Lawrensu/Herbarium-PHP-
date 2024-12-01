@@ -292,6 +292,13 @@ button {
     color: var(--clr-orange);
 }
 
+.nav__wrapper-login {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    justify-items: flex-start;
+}
+
 .nav__login-link {
     display: block;
     color: var(--clr-dark);
