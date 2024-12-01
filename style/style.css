@@ -292,6 +292,13 @@ button {
     color: var(--clr-orange);
 }
 
+.nav__wrapper-login {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    justify-items: flex-start;
+}
+
 .nav__login-link {
     display: block;
     color: var(--clr-dark);
@@ -1248,7 +1255,7 @@ dl {
 
 .identify__wrapper h1 {
     text-align: center;
-    color: var (--clr-dark);
+    color: var(--clr-dark);
     font-size: var(--size-5xl);
 }
 
@@ -2027,7 +2034,7 @@ legend {
     width: 95vw;
     border: 0.4em solid transparent;
     border-image: linear-gradient(to right, rgb(3, 95, 23), rgb(34, 193, 195)) 1;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow:0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
 }
 
@@ -2036,7 +2043,7 @@ legend {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    width: 85vw;
+    width: 80vw;
 }
 
 .registration__input-box label {
@@ -2107,7 +2114,6 @@ legend {
     margin-top: 4rem;
     justify-content: center;
     align-items: center;
-    
 }
 
 .login__container {
@@ -2116,7 +2122,7 @@ legend {
     gap: 2rem;
     justify-content: center;
     align-items: center;
-    background-color: var (--clr-yellow);padding: 2rem;
+    background-color: var(--clr-yellow);padding: 2rem;
     width: 95vw;
     border: 0.4em solid transparent;
     border-image: linear-gradient(to right, rgb(3, 95, 23), rgb(34, 193, 195)) 1;
@@ -2278,13 +2284,6 @@ legend {
     flex-direction: column;
     gap: 1rem;
     padding: 1rem;
-    background-color: #f7eaad;
-    min-height: 100vh;
-} 
-
-.main-content-admin .bg-main {
-    margin-left: 260px; /* Matches the width of the sidebar */
-    padding: 2rem;
     border-left: 1px solid #ddd;
 }
 
@@ -3146,8 +3145,8 @@ legend {
     .main-content-admin {
         display: flex;
         flex-direction: column;
-        padding: 1rem;
-        gap: 1rem;
+        padding: 4rem 1rem;
+        gap: 1.5rem;
         border-left: 1px solid #ddd;
     }
     
@@ -3165,7 +3164,6 @@ legend {
     .dashboard-sections {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 20px;
     }
     
     .dashboard-sections section {
