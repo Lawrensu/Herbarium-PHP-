@@ -52,11 +52,11 @@
                 exit();
             } else {
                 // User login
-                $query = "SELECT * FROM registeredUsers WHERE email = ?";
+                $query = "SELECT * FROM registeredUsers WHERE email = ? OR username = ?";
                 $stmt = $conn->prepare($query);
 
                 if ($stmt) {
-                    $stmt->bind_param("s", $identifier);
+                    $stmt->bind_param("ss", $identifier, $identifier);
                     $stmt->execute();
                     $result = $stmt->get_result();
 
@@ -64,6 +64,7 @@
                         $user = $result->fetch_assoc();
                         if ($password === $user['password']) { // Compare plain text passwords
                             $_SESSION['user_id'] = $user['userID'];
+                            $_SESSION['username'] = $user['username'];
                             $_SESSION['user_email'] = $user['email'];
                             session_regenerate_id();
                             header("Location: user_dashboard.php");
