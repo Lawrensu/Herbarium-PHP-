@@ -23,21 +23,21 @@
             <!-- User Management -->
             <section>
                 <h2>User Management</h2>
-                <p>View and manage all registered users:</p>
-                <a href="user_dashboard.php" class="btn">View Users</a>
+                <p>View and manage all registered users.</p>
+                <a href="view_users.php" class="btn">View Users</a>
             </section>
 
             <!-- Enquiries -->
             <section>
                 <h2>Enquiries</h2>
-                <p>Respond to enquiries submitted by users:</p>
+                <p>Respond to enquiries submitted by users.</p>
                 <a href="view_enquiry.php" class="btn">View Enquiries</a>
             </section>
 
             <!-- Contributions -->
             <section>
                 <h2>Contributions</h2>
-                <p>Review contributions made by users:</p>
+                <p>Review contributions made by users.</p>
                 <a href="view_contribute.php" class="btn">View Contributions</a>
             </section>
 
