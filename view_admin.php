@@ -15,7 +15,7 @@
     <?php include 'include/header.php'; ?>
 
     <!-- Main Content -->
-    <div class="main-content-admin bg-main" >
+    <div class="main-content-admin">
         <h1>Admin Dashboard</h1>
         <p>Welcome, Admin! Here, you can manage users, handle enquiries, review contributions, and monitor statistics.</p>
 
