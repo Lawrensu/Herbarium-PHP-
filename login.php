@@ -52,18 +52,19 @@
                 exit();
             } else {
                 // User login
-                $query = "SELECT * FROM registeredUsers WHERE email = ?";
+                $query = "SELECT * FROM registeredUsers WHERE email = ? OR username = ?";
                 $stmt = $conn->prepare($query);
 
                 if ($stmt) {
-                    $stmt->bind_param("s", $identifier);
+                    $stmt->bind_param("ss", $identifier, $identifier);
                     $stmt->execute();
                     $result = $stmt->get_result();
 
                     if ($result->num_rows > 0) {
                         $user = $result->fetch_assoc();
-                        if (password_verify($password, $user['password'])) {
+                        if ($password === $user['password']) { // Compare plain text passwords
                             $_SESSION['user_id'] = $user['userID'];
+                            $_SESSION['username'] = $user['username'];
                             $_SESSION['user_email'] = $user['email'];
                             session_regenerate_id();
                             header("Location: user_dashboard.php");
@@ -72,7 +73,7 @@
                             $error = "Invalid password.";
                         }
                     } else {
-                        $error = "No account found with that email.";
+                        $error = "No account found with that email or username.";
                     }
                     $stmt->close();
                 } else {
