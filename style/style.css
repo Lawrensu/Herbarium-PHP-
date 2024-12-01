@@ -299,6 +299,8 @@ button {
     height: var(--size-4xl);
 
     transition: color 0.3s ease, transform 0.3s ease;    
+
+    margin: 0 auto;
 }
 
 .nav__login-link:hover {
@@ -306,14 +308,23 @@ button {
     transform: scale(1.2);
 }
 
+.nav__login-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
 /* Username Styling */
 .username {
     font-size: var(--size-base); 
     font-weight: bold; 
     color: var(--clr-dark);
-    margin-left: var(--size-xs); 
     vertical-align: middle; 
+    text-decoration: none;
 }
+
 
 .forgot__link {
     text-decoration: none;
@@ -2439,7 +2450,8 @@ legend {
         width: var(--size-5xl);
         height: var(--size-5xl);
 
-        transition: color 0.3s ease, transform 0.3s ease;    
+        transition: color 0.3s ease, transform 0.3s ease; 
+    
     }
 
     .nav__login-link:hover {
@@ -2548,6 +2560,10 @@ legend {
             opacity: 1;
             transform: translateY(0);
         }
+    }
+
+    .username {
+        font-size: var(--size-lg); 
     }
 
     /* Footer for bigger display */
