@@ -37,7 +37,7 @@
                                 <th>Plant Family</th>
                                 <th>Plant Genus</th>
                                 <th>Plant Species</th>
-                                <th>Picture</th>
+                                <th>Pictures</th>
                                 <th>Contribution Date</th>
                             </tr>
                         </thead>
@@ -52,13 +52,15 @@
 
                             if ($result->num_rows > 0) {
                                 while ($row = $result->fetch_assoc()) {
+                                    // Split the picturePath into freshLeafPath and herbariumPath
+                                    list($freshLeafPath, $herbariumPath) = explode(';', $row['picturePath']);
                                     echo "<tr>";
                                     echo "<td>" . htmlspecialchars($row['contributionID']) . "</td>";
                                     echo "<td>" . htmlspecialchars($row['plantName']) . "</td>";
                                     echo "<td>" . htmlspecialchars($row['plantFamily']) . "</td>";
                                     echo "<td>" . htmlspecialchars($row['plantGenus']) . "</td>";
                                     echo "<td>" . htmlspecialchars($row['plantSpecies']) . "</td>";
-                                    echo "<td><a href='" . htmlspecialchars($row['picturePath']) . "' target='_blank'>View</a></td>";
+                                    echo "<td><a href='uploads/" . htmlspecialchars($freshLeafPath) . "' target='_blank'>Fresh Leaf</a> | <a href='uploads/" . htmlspecialchars($herbariumPath) . "' target='_blank'>Herbarium</a></td>";
                                     echo "<td>" . htmlspecialchars($row['contribution_date']) . "</td>";
                                     echo "</tr>";
                                 }

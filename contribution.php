@@ -5,7 +5,7 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 
 // Check if the user is logged in
-$isLoggedIn = isset($_SESSION['user_id']);
+$isLoggedIn = isset($_SESSION['user_id']) || isset($_SESSION['admin_id']);
 
 // Error checking
 function validateFormData($postData, $fileData)
@@ -100,7 +100,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     </div>
                 <?php endif; ?>
                 
-                <form class="contribution__form" action="contribution.php" method="post" enctype="multipart/form-data">
+                <form class="contribution__form" action="check_login.php" method="post" enctype="multipart/form-data">
                     <fieldset>
                         <legend>Plant Information</legend>
                         <div class="contribution__text-box">

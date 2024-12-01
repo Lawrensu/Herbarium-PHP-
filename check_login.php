@@ -4,13 +4,13 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-// Check if the user is logged in
-if (!isset($_SESSION['user_id'])) {
-    // User is not logged in, display a message and provide a link to the login page
+// Check if the user or admin is logged in
+if (!isset($_SESSION['user_id']) && !isset($_SESSION['admin_id'])) {
+    // User or admin is not logged in, display a message and provide a link to the login page
     $message = "You must be logged in to submit a contribution.";
     $loginLink = "login.php";
 } else {
-    // User is logged in, proceed with the form submission
+    // User or admin is logged in, proceed with the form submission
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
         // Include the contribution process script
         include 'include/contribution_process.php';

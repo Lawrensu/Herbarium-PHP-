@@ -1408,6 +1408,44 @@ dl {
     font-size: var(--size-sm);
 }
 
+/* CONTRIBUTION CONFIRM PAGE */
+.contribution-confirmation__main-content {
+    padding: 2rem;
+    background-color: var(--clr-light);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 0.4em;
+    margin: 2rem auto;
+    max-width: 90%;
+}
+
+.contribution-confirmation__container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+}
+
+.contribution-confirmation__table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.contribution-confirmation__table th, .contribution-confirmation__table td {
+    border: 1px solid var(--clr-dark);
+    padding: 0.5rem;
+    text-align: left;
+    font-size: var(--size-base);
+}
+
+.contribution-confirmation__table th {
+    background-color: var(--clr-green);
+    color: var(--clr-light);
+}
+
+.contribution-confirmation__table td {
+    background-color: var(--clr-light);
+}
 
 /* ENQUIRY PAGE */
 .enquiry__wrapper {
@@ -3184,6 +3222,18 @@ legend {
 
     .contribution__btn {
         font-size: var(--size-base);
+    }
+
+
+    /* CONTRIBUTION CONFIRMED PAGE */
+    .contribution-confirmation__main-content {
+        padding: 1rem;
+        margin: 1rem auto;
+    }
+
+    .contribution-confirmation__table th, .contribution-confirmation__table td {
+        padding: 0.5rem;
+        font-size: var(--size-sm);
     }
 
 
