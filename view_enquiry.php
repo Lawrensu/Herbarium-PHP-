@@ -3,83 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Lawrence Lian">
+    <meta name="description" content="View and manage all user enquiries">
+    <meta name="keywords" content="admin, view, enquiries, management">
 
-    <meta name="author" content="">
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-
-    <title>User Enquiry</title>
+    <link rel="stylesheet" type="text/css" href="style/style.css">
+    <title>View Enquiries</title>
 </head>
-
 <body>
-<?php
-    $userenquiry = 
-    [
-        ['id' => 1, 'name' => 'John Doe', 'email' => 'john@example.com', 'message' => 'Hello!'],
-        ['id' => 2, 'name' => 'Jane Smith', 'email' => 'jane@example.com', 'message' => 'Hi there!']
-    ];
-    if ($userenquiry) 
-    {
-        echo "<table border='1'>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Message</th>
-                </tr>";
-        foreach ($userenquiry as $enquiry) {
-            echo "<tr>
-                    <td>{$enquiry['id']}</td>
-                    <td>{$enquiry['name']}</td>
-                    <td>{$enquiry['email']}</td>
-                    <td>{$enquiry['message']}</td>
-                  </tr>";
-        }
-        echo "</table>";
-    } else {
-        echo "No enquiries found.";
-    }
-?>
-<?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "Leafly_DB";
+    <!-- Header -->
+    <?php include 'include/header.php'; ?>
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+    <!-- Main Content -->
+    <div class="view-enquiries__main-content">
+        <h1>View Enquiries</h1>
+        <p>Manage all user enquiries.</p>
 
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+        <div class="view-enquiries__dashboard-sections">
+            <!-- Back to Dashboard Button -->
+            <section>
+                <a href="view_admin.php" class="btn">Back to Dashboard</a>
+            </section>
 
-$sql = "SELECT id, name, email, message FROM enquiries";
-$result = $conn->query($sql);
+            <!-- Enquiry Management Table -->
+            <section>
+                <h2>User Enquiries</h2>
+                <div class="view-enquiries__table-wrapper">
+                    <table class="view-enquiries__enquiry-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Message</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            include 'connection.php';
+                            include 'database.php';
 
-if ($result->num_rows > 0) {
-    echo "<table border='1'>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Message</th>
-            </tr>";
-    while($row = $result->fetch_assoc()) {
-        echo "<tr>
-                <td>{$row['id']}</td>
-                <td>{$row['name']}</td>
-                <td>{$row['email']}</td>
-                <td>{$row['message']}</td>
-              </tr>";
-    }
-    echo "</table>";
-} else {
-    echo "No enquiries found.";
-}
+                            // Fetch all user enquiries
+                            $query = "SELECT id, name, email, message FROM enquiries";
+                            $result = $conn->query($query);
 
-$conn->close();
-?>
-    
+                            if ($result->num_rows > 0) {
+                                while ($row = $result->fetch_assoc()) {
+                                    echo "<tr>";
+                                    echo "<td>" . htmlspecialchars($row['id']) . "</td>";
+                                    echo "<td>" . htmlspecialchars($row['name']) . "</td>";
+                                    echo "<td>" . htmlspecialchars($row['email']) . "</td>";
+                                    echo "<td>" . htmlspecialchars($row['message']) . "</td>";
+                                    echo "</tr>";
+                                }
+                            } else {
+                                echo "<tr><td colspan='4'>No enquiries found.</td></tr>";
+                            }
+
+                            $conn->close();
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <?php include 'include/footer.php'; ?>
+    </footer>
+
+    <?php include 'include/bckToTopBtn.php'; ?>
 </body>
 </html>
