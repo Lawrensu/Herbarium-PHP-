@@ -1201,8 +1201,6 @@ dl {
     transition: all 0.3s ease;
 }
 
-
-
 /*VIDEO CARE PAGE*/
 .care__video-wrapper {
     width: 90vw;
@@ -2401,7 +2399,7 @@ legend {
     background-color: var(--clr-dark);
 }
 
-/* View Enquiry */
+/* VIEW ENQUIRY PAGE */
 .view-enquiries__main-content {
     padding: 2rem;
     background-color: var(--clr-light);
@@ -2437,6 +2435,7 @@ legend {
     border: 1px solid var(--clr-dark);
     padding: 0.5rem;
     text-align: left;
+    font-size: var(--size-base);
 }
 
 .view-enquiries__enquiry-table th {
@@ -3242,43 +3241,71 @@ legend {
     }
 
 
-    /* View Enquiry */
+    /* VIEW ENQUIRY PAGE */
     .view-enquiries__main-content {
-        padding: 1rem;
-        margin: 1rem auto;
+        padding: 2rem;
+        background-color: var(--clr-light);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 0.4em;
+        margin: 2rem auto;
+        max-width: 90%;
     }
-
-    .view-enquiries__enquiry-table th, .view-enquiries__enquiry-table td {
-        padding: 0.25rem;
+    
+    /* Dashboard sections */
+    .view-enquiries__dashboard-sections {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
     }
-
-    .view-enquiries__btn {
-        padding: 0.25rem 0.5rem;
-        font-size: var(--size-sm);
-    }
-
+    
+    /* Enquiry table wrapper */
     .view-enquiries__table-wrapper {
         overflow-x: auto;
     }
-
+    
+    /* Enquiry table */
     .view-enquiries__enquiry-table {
-        display: block;
         width: 100%;
-    }
-
-    .view-enquiries__enquiry-table thead, .view-enquiries__enquiry-table tbody, .view-enquiries__enquiry-table th, .view-enquiries__enquiry-table td, .view-enquiries__enquiry-table tr {
-        display: block;
-    }
-
-    .view-enquiries__enquiry-table th, .view-enquiries__enquiry-table td {
-        width: 100%;
-        box-sizing: border-box;
-    }
-
-    .view-enquiries__enquiry-table tr {
-        margin-bottom: 0.5rem;
+        border-collapse: separate;
+        border-spacing: 0;
+        margin-top: 1rem;
+        border-radius: 0.4em;
+        overflow: hidden;
     }
     
+    .view-enquiries__enquiry-table th, .view-enquiries__enquiry-table td {
+        border: 1px solid var(--clr-dark);
+        padding: 0.5rem;
+        text-align: left;
+        font-size: var(--size-base);
+    }
+    
+    .view-enquiries__enquiry-table th {
+        background-color: var(--clr-green);
+        color: var(--clr-light);
+    }
+    
+    .view-enquiries__enquiry-table td {
+        background-color: var(--clr-light);
+    }
+    
+    .view-enquiries__btn {
+        background-color: var(--clr-orange);
+        color: var(--clr-light);
+        padding: 0.5rem 1rem;
+        text-decoration: none;
+        border-radius: 0.4em;
+        transition: background-color 0.3s ease;
+        border: none;
+        cursor: pointer;
+        display: inline-block;
+        text-align: center;
+    }
+    
+    .view-enquiries__btn:hover {
+        background-color: var(--clr-dark);
+    }
+
 
     /* View Contribution */
 
