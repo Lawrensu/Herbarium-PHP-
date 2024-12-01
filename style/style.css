@@ -4,6 +4,7 @@
     --clr-yellow: #f7eaad;
     --clr-green: #639d51; /*Color for nav and footer */
     --clr-light: #d7e4d4; /*color for background */
+    --clr-background: #f7eaad; /* Added background color */
 
     /* Extra Colors */
     --clr-dark: #24380B; /* Colors for text */
@@ -1250,7 +1251,7 @@ dl {
 
 .identify__wrapper h1 {
     text-align: center;
-    color: var(--clr-dark);
+    color: var (--clr-dark);
     font-size: var(--size-5xl);
 }
 
@@ -2029,7 +2030,7 @@ legend {
     width: 95vw;
     border: 0.4em solid transparent;
     border-image: linear-gradient(to right, rgb(3, 95, 23), rgb(34, 193, 195)) 1;
-    box-shadow:0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
 }
 
@@ -2038,7 +2039,7 @@ legend {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    width: 80vw;
+    width: 85vw;
 }
 
 .registration__input-box label {
@@ -2117,7 +2118,7 @@ legend {
     gap: 2rem;
     justify-content: center;
     align-items: center;
-    background-color: var(--clr-yellow);padding: 2rem;
+    background-color: var (--clr-yellow);padding: 2rem;
     width: 95vw;
     border: 0.4em solid transparent;
     border-image: linear-gradient(to right, rgb(3, 95, 23), rgb(34, 193, 195)) 1;
@@ -2285,7 +2286,7 @@ legend {
     min-height: 100vh;
 } 
 
-.main-content-admin {
+.main-content-admin .bg-main {
     margin-left: 260px; /* Matches the width of the sidebar */
     padding: 2rem;
     background-color: #f7eaad;
@@ -2314,13 +2315,13 @@ legend {
 }
 
 .main-content-admin ul li a {
-    color: #0066cc;
+    color:#f7eaad;
     text-decoration: none;
     transition: color 0.3s ease-in-out;
 }
 
 .main-content-admin ul li a:hover {
-    color: #004080;
+    color: #f7eaad;
 }
 
 /* Responsive Design */
