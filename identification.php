@@ -7,7 +7,7 @@
 
     <meta name="description" content="Identify various plant species with Leafly's comprehensive plant identification tools and resources. Learn how to recognize and classify plants accurately.">
     <meta name="keywords" content="plant identification, identify plants, plant species, plant classification, Leafly, botanical identification, plant recognition">
-    <meta name="author" content="Faiq">
+    <meta name="author" content="Faiq/Lawrence">
 
     <link rel="stylesheet" type="text/css" href="style/style.css">
 

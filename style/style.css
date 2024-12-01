@@ -2275,9 +2275,34 @@ legend {
 
 /* Admin Page */
 
+/* Sidebar Styles */
+.sidebar-admin {
+    width: 250px;
+    background-color: #444;
+    color: white;
+    position: fixed;
+    height: 100vh;
+    padding: 1rem;
+    top: 0;
+    left: 0;
+    overflow-y: auto;
+}
+
+.sidebar-admin a {
+    display: block;
+    padding: 10px 15px;
+    color: white;
+    border-bottom: 1px solid #555;
+    text-decoration: none;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.sidebar-admin a:hover {
+    background-color: #0066cc;
+}
 
 /* Main Content Styles */
-.bg-main div {
+.main-content-admin {
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -2289,58 +2314,61 @@ legend {
 .main-content-admin .bg-main {
     margin-left: 260px; /* Matches the width of the sidebar */
     padding: 2rem;
-    background-color: #f7eaad;
-    min-height: 100vh;
-    border-left: 1px solid #f7eaad;
+    border-left: 1px solid #ddd;
 }
 
-
 .main-content-admin h1 {
-    font-size: 2rem;
-    color: #f7eaad;
-    margin-bottom: 1rem;
+    font-size: var(--size-5xl);
+    color: var(--clr-dark);
 }
 
 .main-content-admin p {
-    margin-bottom: 1rem;
+    text-align: justify;
+    text-align: center;
 }
 
-.main-content-admin ul {
-    list-style: none;
-    padding: 0;
+.dashboard-sections {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
 }
 
-.main-content-admin ul li {
-    margin: 0.5rem 0;
+.dashboard-sections section {
+    display: grid;
+    background: #f9f9f9;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.main-content-admin ul li a {
-    color:#f7eaad;
-    text-decoration: none;
-    transition: color 0.3s ease-in-out;
+.dashboard-sections section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.main-content-admin ul li a:hover {
-    color: #f7eaad;
+.dashboard-sections section h2 {
+    margin-bottom: 15px;
+    color: #0b0b0b;
 }
 
-/* Responsive Design */
-@media screen and (max-width: 768px) {
-    .sidebar-admin {
-        width: 100%;
-        height: auto;
-        position: relative;
-    }
+.dashboard-sections section p {
+    margin-bottom: 15px;
+    color: #373434;
+    text-align: left;
+}
 
-    .main-content-admin {
-        margin-left: 0;
-        padding: 1rem;
-    }
+.dashboard-sections section a {
+    display: flex;
+    margin: 0 auto;
 }
 
 /* View Enquiry */
 
+
 /* View Contribute */
+
 
 /* PC display starts here */
 /* md */
@@ -3016,43 +3044,31 @@ legend {
 
     /* view_admin Page */
     /* Main Content Styles */
-    .admin-dashboard {
-        display: flex;
-        margin-left: 250px;
-        min-height: 100vh;
-    }
-
-    .main-content {
-        flex: 1;
-        padding: 20px;
-        background-color: #fff;
-    }
-
     .main-content-admin {
-        margin: 20px auto;
-        padding: 20px;
-        max-width: 1200px;
-        background-color: #fff;
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+        gap: 1rem;
+        border-left: 1px solid #ddd;
     }
-
+    
     .main-content-admin h1 {
-        color: #333;
-        margin-bottom: 20px;
+        font-size: var(--size-5xl);
+        color: var(--clr-dark);   
+        text-align: center; 
     }
-
+    
     .main-content-admin p {
-        color: #666;
-        margin-bottom: 20px;
+        text-align: justify;
+        text-align: center;
     }
-
+    
     .dashboard-sections {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 20px;
     }
-
+    
     .dashboard-sections section {
         background: #f9f9f9;
         padding: 20px;
@@ -3061,20 +3077,21 @@ legend {
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         transition: transform 0.3s, box-shadow 0.3s;
     }
-
+    
     .dashboard-sections section:hover {
         transform: translateY(-5px);
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
-
+    
     .dashboard-sections section h2 {
         margin-bottom: 15px;
         color: #0b0b0b;
     }
-
+    
     .dashboard-sections section p {
         margin-bottom: 15px;
         color: #373434;
+        text-align: left;
     }
 
     /* Footer styles */
