@@ -2302,18 +2302,16 @@ legend {
 
 /* Main Content Styles */
 .main-content-admin {
-    margin-left: 260px; /* Matches the width of the sidebar */
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
     padding: 2rem;
-    background-color: #fff;
-    min-height: 100vh;
     border-left: 1px solid #ddd;
 }
 
-
 .main-content-admin h1 {
-    font-size: 2rem;
-    color: #0066cc;
-    margin-bottom: 1rem;
+    font-size: var(--size-5xl);
+    color: var(--clr-dark);
 }
 
 .main-content-admin p {
@@ -2328,6 +2326,7 @@ legend {
 }
 
 .dashboard-sections section {
+    display: grid;
     background: #f9f9f9;
     padding: 20px;
     border: 1px solid #ddd;
@@ -2352,6 +2351,10 @@ legend {
     text-align: left;
 }
 
+.dashboard-sections section a {
+    display: flex;
+    margin: 0 auto;
+}
 
 /* View Enquiry */
 

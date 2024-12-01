@@ -44,7 +44,7 @@
             <!-- Logout -->
             <section>
                 <h2>Logout</h2>
-                <p>Ensure you log out securely after managing the system:</p>
+                <p>Log out securely.</p>
                 <a href="logout.php" class="btn">Logout</a>
             </section>
         </div>
