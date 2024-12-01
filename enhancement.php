@@ -18,7 +18,7 @@
     <?php include 'include/header.php'; ?>
 
     <main class="enhancement__wrapper container">
-        <h1>Enhancement</h1>
+        <h1>HTML & CSS Enhancement (A1)</h1>
 
         <article class="enhancement__box">
             <img class="enhancement__img" src="images/enhancement_page/hamburger_nav.gif" alt="Hamburger Nav Gif">
@@ -30,23 +30,23 @@
                 <section class="enhancement__list-wrapper">
                     <p><strong>Pages that have the enhancement:</strong></p>
                     <ul>
-                        <li><a target="_blank" class=" btn" href="index.html">Home</a></li>
-                        <li><a target="_blank" class=" btn" href="classification.html">Classification</a></li>
-                        <li><a target="_blank" class=" btn" href="tutorial.html">Tutorial</a></li>
-                        <li><a target="_blank" class=" btn" href="tools.html">Tools</a></li>
-                        <li><a target="_blank" class=" btn" href="aftercare.html">Aftercare</a></li>
-                        <li><a target="_blank" class=" btn" href="identification.html">Identification</a></li>
-                        <li><a target="_blank" class=" btn" href="contribution.html">Contribution</a></li>
-                        <li><a target="_blank" class=" btn" href="Enquiry.html">Enquiry</a></li>
-                        <li><a target="_blank" class=" btn" href="profile.html">Team Profile</a></li>
-                        <li><a target="_blank" class=" btn" href="lawrence.html">Meet Lawrence</a></li>
-                        <li><a target="_blank" class=" btn" href="gibson.html">Meet Gibson</a></li>
-                        <li><a target="_blank" class=" btn" href="edward.html">Meet Edward</a></li>
-                        <li><a target="_blank" class=" btn" href="meiyee.html">Meet Mei Yee</a></li>
-                        <li><a target="_blank" class=" btn" href="faiq.html">Meet Faiq</a></li>
-                        <li><a target="_blank" class=" btn" href="login.html">Login</a></li>
-                        <li><a target="_blank" class=" btn" href="registration.html">Registration</a></li>
-                        <li><a target="_blank" class=" btn" href="enhancement.html">Enhancement</a></li>
+                        <li><a target="_blank" class=" btn" href="index.php">Home</a></li>
+                        <li><a target="_blank" class=" btn" href="classification.php">Classification</a></li>
+                        <li><a target="_blank" class=" btn" href="tutorial.php">Tutorial</a></li>
+                        <li><a target="_blank" class=" btn" href="tools.php">Tools</a></li>
+                        <li><a target="_blank" class=" btn" href="aftercare.php">Aftercare</a></li>
+                        <li><a target="_blank" class=" btn" href="identification.php">Identification</a></li>
+                        <li><a target="_blank" class=" btn" href="contribution.php">Contribution</a></li>
+                        <li><a target="_blank" class=" btn" href="Enquiry.php">Enquiry</a></li>
+                        <li><a target="_blank" class=" btn" href="profile.php">Team Profile</a></li>
+                        <li><a target="_blank" class=" btn" href="lawrence.php">Meet Lawrence</a></li>
+                        <li><a target="_blank" class=" btn" href="gibson.php">Meet Gibson</a></li>
+                        <li><a target="_blank" class=" btn" href="edward.php">Meet Edward</a></li>
+                        <li><a target="_blank" class=" btn" href="meiyee.php">Meet Mei Yee</a></li>
+                        <li><a target="_blank" class=" btn" href="faiq.php">Meet Faiq</a></li>
+                        <li><a target="_blank" class=" btn" href="login.php">Login</a></li>
+                        <li><a target="_blank" class=" btn" href="registration.php">Registration</a></li>
+                        <li><a target="_blank" class=" btn" href="enhancement.php">Enhancement</a></li>
                     </ul>
                 </section>
 
@@ -71,23 +71,23 @@
                 <section class="enhancement__list-wrapper">
                     <p><strong>Pages that have the enhancement:</strong></p>
                     <ul>
-                        <li><a target="_blank" class=" btn" href="index.html">Home</a></li>
-                        <li><a target="_blank" class=" btn" href="classification.html">Classification</a></li>
-                        <li><a target="_blank" class=" btn" href="tutorial.html">Tutorial</a></li>
-                        <li><a target="_blank" class=" btn" href="tools.html">Tools</a></li>
-                        <li><a target="_blank" class=" btn" href="aftercare.html">Aftercare</a></li>
-                        <li><a target="_blank" class=" btn" href="identification.html">Identification</a></li>
-                        <li><a target="_blank" class=" btn" href="contribution.html">Contribution</a></li>
-                        <li><a target="_blank" class=" btn" href="Enquiry.html">Enquiry</a></li>
-                        <li><a target="_blank" class=" btn" href="profile.html">Team Profile</a></li>
-                        <li><a target="_blank" class=" btn" href="lawrence.html">Meet Lawrence</a></li>
-                        <li><a target="_blank" class=" btn" href="gibson.html">Meet Gibson</a></li>
-                        <li><a target="_blank" class=" btn" href="edward.html">Meet Edward</a></li>
-                        <li><a target="_blank" class=" btn" href="meiyee.html">Meet Mei Yee</a></li>
-                        <li><a target="_blank" class=" btn" href="faiq.html">Meet Faiq</a></li>
-                        <li><a target="_blank" class=" btn" href="login.html">Login</a></li>
-                        <li><a target="_blank" class=" btn" href="registration.html">Registration</a></li>
-                        <li><a target="_blank" class=" btn" href="enhancement.html">Enhancement</a></li>
+                        <li><a target="_blank" class=" btn" href="index.php">Home</a></li>
+                        <li><a target="_blank" class=" btn" href="classification.php">Classification</a></li>
+                        <li><a target="_blank" class=" btn" href="tutorial.php">Tutorial</a></li>
+                        <li><a target="_blank" class=" btn" href="tools.php">Tools</a></li>
+                        <li><a target="_blank" class=" btn" href="aftercare.php">Aftercare</a></li>
+                        <li><a target="_blank" class=" btn" href="identification.php">Identification</a></li>
+                        <li><a target="_blank" class=" btn" href="contribution.php">Contribution</a></li>
+                        <li><a target="_blank" class=" btn" href="Enquiry.php">Enquiry</a></li>
+                        <li><a target="_blank" class=" btn" href="profile.php">Team Profile</a></li>
+                        <li><a target="_blank" class=" btn" href="lawrence.php">Meet Lawrence</a></li>
+                        <li><a target="_blank" class=" btn" href="gibson.php">Meet Gibson</a></li>
+                        <li><a target="_blank" class=" btn" href="edward.php">Meet Edward</a></li>
+                        <li><a target="_blank" class=" btn" href="meiyee.php">Meet Mei Yee</a></li>
+                        <li><a target="_blank" class=" btn" href="faiq.php">Meet Faiq</a></li>
+                        <li><a target="_blank" class=" btn" href="login.php">Login</a></li>
+                        <li><a target="_blank" class=" btn" href="registration.php">Registration</a></li>
+                        <li><a target="_blank" class=" btn" href="enhancement.php">Enhancement</a></li>
                     </ul>
                 </section>
 
@@ -111,23 +111,23 @@
                 <section class="enhancement__list-wrapper">
                     <p><strong>Pages that have the enhancement:</strong></p>
                     <ul>
-                        <li><a target="_blank" class=" btn" href="index.html">Home</a></li>
-                        <li><a target="_blank" class=" btn" href="classification.html">Classification</a></li>
-                        <li><a target="_blank" class=" btn" href="tutorial.html">Tutorial</a></li>
-                        <li><a target="_blank" class=" btn" href="tools.html">Tools</a></li>
-                        <li><a target="_blank" class=" btn" href="aftercare.html">Aftercare</a></li>
-                        <li><a target="_blank" class=" btn" href="identification.html">Identification</a></li>
-                        <li><a target="_blank" class=" btn" href="contribution.html">Contribution</a></li>
-                        <li><a target="_blank" class=" btn" href="Enquiry.html">Enquiry</a></li>
-                        <li><a target="_blank" class=" btn" href="profile.html">Team Profile</a></li>
-                        <li><a target="_blank" class=" btn" href="lawrence.html">Meet Lawrence</a></li>
-                        <li><a target="_blank" class=" btn" href="gibson.html">Meet Gibson</a></li>
-                        <li><a target="_blank" class=" btn" href="edward.html">Meet Edward</a></li>
-                        <li><a target="_blank" class=" btn" href="meiyee.html">Meet Mei Yee</a></li>
-                        <li><a target="_blank" class=" btn" href="faiq.html">Meet Faiq</a></li>
-                        <li><a target="_blank" class=" btn" href="login.html">Login</a></li>
-                        <li><a target="_blank" class=" btn" href="registration.html">Registration</a></li>
-                        <li><a target="_blank" class=" btn" href="enhancement.html">Enhancement</a></li>
+                        <li><a target="_blank" class=" btn" href="index.php">Home</a></li>
+                        <li><a target="_blank" class=" btn" href="classification.php">Classification</a></li>
+                        <li><a target="_blank" class=" btn" href="tutorial.php">Tutorial</a></li>
+                        <li><a target="_blank" class=" btn" href="tools.php">Tools</a></li>
+                        <li><a target="_blank" class=" btn" href="aftercare.php">Aftercare</a></li>
+                        <li><a target="_blank" class=" btn" href="identification.php">Identification</a></li>
+                        <li><a target="_blank" class=" btn" href="contribution.php">Contribution</a></li>
+                        <li><a target="_blank" class=" btn" href="Enquiry.php">Enquiry</a></li>
+                        <li><a target="_blank" class=" btn" href="profile.php">Team Profile</a></li>
+                        <li><a target="_blank" class=" btn" href="lawrence.php">Meet Lawrence</a></li>
+                        <li><a target="_blank" class=" btn" href="gibson.php">Meet Gibson</a></li>
+                        <li><a target="_blank" class=" btn" href="edward.php">Meet Edward</a></li>
+                        <li><a target="_blank" class=" btn" href="meiyee.php">Meet Mei Yee</a></li>
+                        <li><a target="_blank" class=" btn" href="faiq.php">Meet Faiq</a></li>
+                        <li><a target="_blank" class=" btn" href="login.php">Login</a></li>
+                        <li><a target="_blank" class=" btn" href="registration.php">Registration</a></li>
+                        <li><a target="_blank" class=" btn" href="enhancement.php">Enhancement</a></li>
                     </ul>
                 </section>
 
@@ -152,23 +152,23 @@
                 <section class="enhancement__list-wrapper">
                     <p><strong>Pages that have the enhancement:</strong></p>
                     <ul>
-                        <li><a target="_blank" class=" btn" href="index.html">Home</a></li>
-                        <li><a target="_blank" class=" btn" href="classification.html">Classification</a></li>
-                        <li><a target="_blank" class=" btn" href="tutorial.html">Tutorial</a></li>
-                        <li><a target="_blank" class=" btn" href="tools.html">Tools</a></li>
-                        <li><a target="_blank" class=" btn" href="aftercare.html">Aftercare</a></li>
-                        <li><a target="_blank" class=" btn" href="identification.html">Identification</a></li>
-                        <li><a target="_blank" class=" btn" href="contribution.html">Contribution</a></li>
-                        <li><a target="_blank" class=" btn" href="Enquiry.html">Enquiry</a></li>
-                        <li><a target="_blank" class=" btn" href="profile.html">Team Profile</a></li>
-                        <li><a target="_blank" class=" btn" href="lawrence.html">Meet Lawrence</a></li>
-                        <li><a target="_blank" class=" btn" href="gibson.html">Meet Gibson</a></li>
-                        <li><a target="_blank" class=" btn" href="edward.html">Meet Edward</a></li>
-                        <li><a target="_blank" class=" btn" href="meiyee.html">Meet Mei Yee</a></li>
-                        <li><a target="_blank" class=" btn" href="faiq.html">Meet Faiq</a></li>
-                        <li><a target="_blank" class=" btn" href="login.html">Login</a></li>
-                        <li><a target="_blank" class=" btn" href="registration.html">Registration</a></li>
-                        <li><a target="_blank" class=" btn" href="enhancement.html">Enhancement</a></li>
+                        <li><a target="_blank" class=" btn" href="index.php">Home</a></li>
+                        <li><a target="_blank" class=" btn" href="classification.php">Classification</a></li>
+                        <li><a target="_blank" class=" btn" href="tutorial.php">Tutorial</a></li>
+                        <li><a target="_blank" class=" btn" href="tools.php">Tools</a></li>
+                        <li><a target="_blank" class=" btn" href="aftercare.php">Aftercare</a></li>
+                        <li><a target="_blank" class=" btn" href="identification.php">Identification</a></li>
+                        <li><a target="_blank" class=" btn" href="contribution.php">Contribution</a></li>
+                        <li><a target="_blank" class=" btn" href="Enquiry.php">Enquiry</a></li>
+                        <li><a target="_blank" class=" btn" href="profile.php">Team Profile</a></li>
+                        <li><a target="_blank" class=" btn" href="lawrence.php">Meet Lawrence</a></li>
+                        <li><a target="_blank" class=" btn" href="gibson.php">Meet Gibson</a></li>
+                        <li><a target="_blank" class=" btn" href="edward.php">Meet Edward</a></li>
+                        <li><a target="_blank" class=" btn" href="meiyee.php">Meet Mei Yee</a></li>
+                        <li><a target="_blank" class=" btn" href="faiq.php">Meet Faiq</a></li>
+                        <li><a target="_blank" class=" btn" href="login.php">Login</a></li>
+                        <li><a target="_blank" class=" btn" href="registration.php">Registration</a></li>
+                        <li><a target="_blank" class=" btn" href="enhancement.php">Enhancement</a></li>
                     </ul>
                 </section>
 
@@ -191,10 +191,10 @@
                 <section class="enhancement__list-wrapper">
                     <p><strong>Pages that have the enhancement:</strong></p>
                     <ul>
-                        <li><a target="_blank" class=" btn" href="tutorial.html">Tutorial</a></li>
-                        <li><a target="_blank" class=" btn" href="tools.html">Tools</a></li>
-                        <li><a target="_blank" class=" btn" href="aftercare.html">Aftercare</a></li>
-                        <li><a target="_blank" class=" btn" href="profile.html">Team Profile</a></li>
+                        <li><a target="_blank" class=" btn" href="tutorial.php">Tutorial</a></li>
+                        <li><a target="_blank" class=" btn" href="tools.php">Tools</a></li>
+                        <li><a target="_blank" class=" btn" href="aftercare.php">Aftercare</a></li>
+                        <li><a target="_blank" class=" btn" href="profile.php">Team Profile</a></li>
                     </ul>
                 </section>
 
@@ -218,11 +218,11 @@
                 <section class="enhancement__list-wrapper">
                     <p><strong>Pages that have the enhancement:</strong></p>
                     <ul>
-                        <li><a target="_blank" class=" btn" href="lawrence.html">Meet Lawrence</a></li>
-                        <li><a target="_blank" class=" btn" href="edward.html">Meet Edward</a></li>
-                        <li><a target="_blank" class=" btn" href="gibson.html">Meet Gibson</a></li>
-                        <li><a target="_blank" class=" btn" href="meiyee.html">Meet Mei Yee</a></li>
-                        <li><a target="_blank" class=" btn" href="faiq.html">Meet Faiq</a></li>
+                        <li><a target="_blank" class=" btn" href="lawrence.php">Meet Lawrence</a></li>
+                        <li><a target="_blank" class=" btn" href="edward.php">Meet Edward</a></li>
+                        <li><a target="_blank" class=" btn" href="gibson.php">Meet Gibson</a></li>
+                        <li><a target="_blank" class=" btn" href="meiyee.php">Meet Mei Yee</a></li>
+                        <li><a target="_blank" class=" btn" href="faiq.php">Meet Faiq</a></li>
                     </ul>
                 </section>
 
@@ -245,23 +245,23 @@
                 <section class="enhancement__list-wrapper">
                     <p><strong>Pages that have the enhancement:</strong></p>
                     <ul>
-                        <li><a target="_blank" class=" btn" href="index.html">Home</a></li>
-                        <li><a target="_blank" class=" btn" href="classification.html">Classification</a></li>
-                        <li><a target="_blank" class=" btn" href="tutorial.html">Tutorial</a></li>
-                        <li><a target="_blank" class=" btn" href="tools.html">Tools</a></li>
-                        <li><a target="_blank" class=" btn" href="aftercare.html">Aftercare</a></li>
-                        <li><a target="_blank" class=" btn" href="identification.html">Identification</a></li>
-                        <li><a target="_blank" class=" btn" href="contribution.html">Contribution</a></li>
-                        <li><a target="_blank" class=" btn" href="Enquiry.html">Enquiry</a></li>
-                        <li><a target="_blank" class=" btn" href="profile.html">Team Profile</a></li>
-                        <li><a target="_blank" class=" btn" href="lawrence.html">Meet Lawrence</a></li>
-                        <li><a target="_blank" class=" btn" href="gibson.html">Meet Gibson</a></li>
-                        <li><a target="_blank" class=" btn" href="edward.html">Meet Edward</a></li>
-                        <li><a target="_blank" class=" btn" href="meiyee.html">Meet Mei Yee</a></li>
-                        <li><a target="_blank" class=" btn" href="faiq.html">Meet Faiq</a></li>
-                        <li><a target="_blank" class=" btn" href="login.html">Login</a></li>
-                        <li><a target="_blank" class=" btn" href="registration.html">Registration</a></li>
-                        <li><a target="_blank" class=" btn" href="enhancement.html">Enhancement</a></li>
+                        <li><a target="_blank" class=" btn" href="index.php">Home</a></li>
+                        <li><a target="_blank" class=" btn" href="classification.php">Classification</a></li>
+                        <li><a target="_blank" class=" btn" href="tutorial.php">Tutorial</a></li>
+                        <li><a target="_blank" class=" btn" href="tools.php">Tools</a></li>
+                        <li><a target="_blank" class=" btn" href="aftercare.php">Aftercare</a></li>
+                        <li><a target="_blank" class=" btn" href="identification.php">Identification</a></li>
+                        <li><a target="_blank" class=" btn" href="contribution.php">Contribution</a></li>
+                        <li><a target="_blank" class=" btn" href="Enquiry.php">Enquiry</a></li>
+                        <li><a target="_blank" class=" btn" href="profile.php">Team Profile</a></li>
+                        <li><a target="_blank" class=" btn" href="lawrence.php">Meet Lawrence</a></li>
+                        <li><a target="_blank" class=" btn" href="gibson.php">Meet Gibson</a></li>
+                        <li><a target="_blank" class=" btn" href="edward.php">Meet Edward</a></li>
+                        <li><a target="_blank" class=" btn" href="meiyee.php">Meet Mei Yee</a></li>
+                        <li><a target="_blank" class=" btn" href="faiq.php">Meet Faiq</a></li>
+                        <li><a target="_blank" class=" btn" href="login.php">Login</a></li>
+                        <li><a target="_blank" class=" btn" href="registration.php">Registration</a></li>
+                        <li><a target="_blank" class=" btn" href="enhancement.php">Enhancement</a></li>
                     </ul>
                 </section>
 
@@ -285,7 +285,7 @@
                 <section class="enhancement__list-wrapper">
                     <p><strong>Pages that have the enhancement:</strong></p>
                     <ul>
-                        <li><a target="_blank" class=" btn" href="index.html">Home</a></li>
+                        <li><a target="_blank" class=" btn" href="index.php">Home</a></li>
                     </ul>
                 </section>
 
@@ -308,8 +308,8 @@
                 <section class="enhancement__list-wrapper">
                     <p><strong>Pages that have the enhancement:</strong></p>
                     <ul>
-                        <li><a target="_blank" class=" btn" href="tutorial.html">Tutorial</a></li>
-                        <li><a target="_blank" class=" btn" href="aftercare.html">Aftercare</a></li>
+                        <li><a target="_blank" class=" btn" href="tutorial.php">Tutorial</a></li>
+                        <li><a target="_blank" class=" btn" href="aftercare.php">Aftercare</a></li>
                     </ul>
                 </section>
 
@@ -332,10 +332,10 @@
                 <section class="enhancement__list-wrapper">
                     <p><strong>Pages that have the enhancement:</strong></p>
                     <ul>
-                        <li><a target="_blank" class=" btn" href="contribution.html">Contribution</a></li>
-                        <li><a target="_blank" class=" btn" href="Enquiry.html">Enquiry</a></li>
-                        <li><a target="_blank" class=" btn" href="login.html">Login</a></li>
-                        <li><a target="_blank" class=" btn" href="registration.html">Registration</a></li>
+                        <li><a target="_blank" class=" btn" href="contribution.php">Contribution</a></li>
+                        <li><a target="_blank" class=" btn" href="Enquiry.php">Enquiry</a></li>
+                        <li><a target="_blank" class=" btn" href="login.php">Login</a></li>
+                        <li><a target="_blank" class=" btn" href="registration.php">Registration</a></li>
                     </ul>
                 </section>
 
@@ -358,11 +358,11 @@
                 <section class="enhancement__list-wrapper">
                     <p><strong>Pages that have the enhancement:</strong></p>
                     <ul>
-                        <li><a target="_blank" target="_blank" class=" btn" href="lawrence.html">Meet Lawrence</a></li>
-                        <li><a target="_blank" target="_blank" class=" btn" href="edward.html">Meet Edward</a></li>
-                        <li><a target="_blank" target="_blank" class=" btn" href="gibson.html">Meet Gibson</a></li>
-                        <li><a target="_blank" target="_blank" class=" btn" href="meiyee.html">Meet Mei Yee</a></li>
-                        <li><a target="_blank" target="_blank" class=" btn" href="faiq.html">Meet Faiq</a></li>
+                        <li><a target="_blank" target="_blank" class=" btn" href="lawrence.php">Meet Lawrence</a></li>
+                        <li><a target="_blank" target="_blank" class=" btn" href="edward.php">Meet Edward</a></li>
+                        <li><a target="_blank" target="_blank" class=" btn" href="gibson.php">Meet Gibson</a></li>
+                        <li><a target="_blank" target="_blank" class=" btn" href="meiyee.php">Meet Mei Yee</a></li>
+                        <li><a target="_blank" target="_blank" class=" btn" href="faiq.php">Meet Faiq</a></li>
                     </ul>
                 </section>
 
@@ -385,7 +385,7 @@
                 <section class="enhancement__list-wrapper">
                     <p><strong>Pages that have the enhancement:</strong></p>
                     <ul>
-                        <li><a target="_blank" class=" btn" href="classification.html">Classification</a></li>
+                        <li><a target="_blank" class=" btn" href="classification.php">Classification</a></li>
                     </ul>
                 </section>
 
@@ -397,6 +397,85 @@
                 </section>
             </div>
         </article>
+
+
+
+        <!-- PHP Part -->
+        <h1>PHP & MySQL Enhancement (A2)</h1>
+
+        <article class="enhancement__box">
+            <img class="enhancement__img" src="images/enhancement_page/identify_module.png" alt="Identify Module Pic">
+
+            <div class="enhancement__desc-box">
+                <h2 class="enhancement__name">Identify Module</h2>
+                <p class="enhancement__desc">The Identify Module allows users to upload images of plants and get them identified using an AI-trained model.</p>
+                <p><strong>Beyond Requirements:</strong> This feature uses machine learning to provide accurate plant identification, which is beyond the basic requirements of the assignment.</p>
+                <p><strong>Implementation:</strong> A programmer needs to integrate a pre-trained AI model using TensorFlow.js and handle image uploads and predictions.</p>
+
+                <section class="enhancement__list-wrapper">
+                    <p><strong>Pages that have the enhancement:</strong></p>
+                    <ul>
+                        <li><a target="_blank" class=" btn" href="identification.php">Identification</a></li>
+                    </ul>
+                </section>
+            </div>
+        </article>
+
+        <article class="enhancement__box">
+            <img class="enhancement__img" src="images/enhancement_page/change_password.png" alt="Delete Account Img">
+
+            <div class="enhancement__desc-box">
+                <h2 class="enhancement__name">Delete Account</h2>
+                <p class="enhancement__desc">The Delete Account feature allows users to permanently delete their accounts from the system.</p>
+                <p><strong>Beyond Requirements:</strong> This feature provides users with the ability to manage their data privacy by allowing them to delete their accounts, which is beyond the basic requirements of the assignment.</p>
+                <p><strong>Implementation:</strong> A programmer needs to create a form to confirm the deletion, validate the user's password, and remove the user's data from the database.</p>
+
+                <section class="enhancement__list-wrapper">
+                    <p><strong>Pages that have the enhancement:</strong></p>
+                    <ul>
+                        <li><a target="_blank" class=" btn" href="login.php">User Dashboard (You must be logged in first)</a></li>
+                    </ul>
+                </section>
+            </div>
+        </article>
+
+        <article class="enhancement__box">
+            <img class="enhancement__img" src="images/enhancement_page/delete_password.png" alt="Change Password Img">
+
+            <div class="enhancement__desc-box">
+                <h2 class="enhancement__name">Change Password</h2>
+                <p class="enhancement__desc">The Change Password feature allows users to update their account passwords securely.</p>
+                <p><strong>Beyond Requirements:</strong> This feature enhances user security by allowing them to change their passwords, which is beyond the basic requirements of the assignment.</p>
+                <p><strong>Implementation:</strong> A programmer needs to create a form to collect the current and new passwords, validate the inputs, and update the password in the database.</p>
+
+                <section class="enhancement__list-wrapper">
+                    <p><strong>Pages that have the enhancement:</strong></p>
+                    <ul>
+                        <li><a target="_blank" class=" btn" href="login.php">User Dashboard (You must be logged in first)</a></li>
+                    </ul>
+                </section>
+            </div>
+        </article>
+
+        <article class="enhancement__box">
+            <img class="enhancement__img" src="images/enhancement_page/user_management_module.png" alt="User Management Img">
+
+            <div class="enhancement__desc-box">
+                <h2 class="enhancement__name">User Management Module</h2>
+                <p class="enhancement__desc">The User Management Module allows admins to view and manage registered users, their contributions, and enquiries.</p>
+                <p><strong>Beyond Requirements:</strong> This feature provides comprehensive user management capabilities for admins, which is beyond the basic requirements of the assignment.</p>
+                <p><strong>Implementation:</strong> A programmer needs to create admin interfaces to view user data, contributions, and enquiries, and implement CRUD operations for user management.</p>
+
+                <section class="enhancement__list-wrapper">
+                    <p><strong>Pages that have the enhancement:</strong></p>
+                    <ul>
+                        <li><a target="_blank" class=" btn" href="login.php">Admin Dashboard (You must be logged in as an Admin first)</a></li>
+                    </ul>
+                </section>
+            </div>
+        </article>
+
+
     </main>
     
      <!-- Footer Part -->

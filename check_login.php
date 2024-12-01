@@ -58,8 +58,6 @@ if (!isset($_SESSION['user_id'])) {
         <p class="main-acknowledgement"><strong>Acknowledgement</strong></p>
         <div class="footer__acknowledgement-wrapper">
             <section class="acknowledgement-section">
-                <a class="footer__acknowledgement-link" target="_blank" href="https://www.youtube.com/watch?v=iAxUpo0aJSk&pp=ygUXdXBsb2FkIGltYWdlIGZvcm0gaHRtbCA%3D">Form Tutorial</a>
-                <a class="footer__acknowledgement-link" target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file">Form Upload Image</a>
                 <a target="_blank" class="footer__acknowledgement-link" href="https://www.geeksforgeeks.org/gradient-borders/">Gradient Border Guide</a>
             </section>
         </div>

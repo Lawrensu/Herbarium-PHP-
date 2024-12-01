@@ -17,18 +17,32 @@
     <!-- Including header part -->
     <?php include 'include/header.php'; ?>
 
-    <main class="dashboard__wrapper container">
-        <div class="dashboard__container">
-            <h1>User Dashboard</h1>
-            <p>Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?>!</p>
-            <p>Here you can manage your account settings.</p>
-            
-            <ul class="dashboard__links">
-                <li><a href="change_password.php">Change Password</a></li>
-                <li><a href="delete_account.php">Delete Account</a></li>
-            </ul>
-            
-            <p><a href="logout.php" class="btn">Logout</a></p>
+    <main class="user-dashboard__main-content">
+        <h1>User Dashboard</h1>
+        <p>Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?>!</p>
+        <p>Here you can manage your account settings.</p>
+
+        <div class="user-dashboard__sections">
+            <!-- Change Password -->
+            <section>
+                <h2>Change Password</h2>
+                <p>Update your account password.</p>
+                <a href="change_password.php" class="btn">Change Password</a>
+            </section>
+
+            <!-- Delete Account -->
+            <section>
+                <h2>Delete Account</h2>
+                <p>Remove your account from our system.</p>
+                <a href="delete_account.php" class="btn">Delete Account</a>
+            </section>
+
+            <!-- Logout -->
+            <section>
+                <h2>Logout</h2>
+                <p>Log out securely.</p>
+                <a href="logout.php" class="btn">Logout</a>
+            </section>
         </div>
     </main>
 
@@ -37,11 +51,6 @@
         <!-- Include footer part -->
         <?php include 'include/footer.php'; ?>
 
-        <p class="main-acknowledgement"><strong>Acknowledgement</strong></p>
-        <div class="footer__acknowledgement-wrapper">
-            <a target="_blank" class="footer__acknowledgement-link" href="https://www.youtube.com/watch?v=moIHTT2XK9g">User Dashboard Tutorial</a>
-            <a target="_blank" class="footer__acknowledgement-link" href="https://www.geeksforgeeks.org/gradient-borders/">Gradient Border Guide</a>
-        </div>
     </footer>
 
     <?php include 'include/bckToTopBtn.php'; ?>

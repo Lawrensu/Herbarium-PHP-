@@ -17,7 +17,7 @@
     <!-- Including header part -->
     <?php include 'include/header.php'; ?>
 
-    <main class="confirmation__wrapper container">
+    <main class="confirmation__main-content container">
         <div class="confirmation__container">
             <h1>Password Change Confirmation</h1>
             <p>Your password has been changed successfully.</p>
@@ -32,7 +32,6 @@
 
         <p class="main-acknowledgement"><strong>Acknowledgement</strong></p>
         <div class="footer__acknowledgement-wrapper">
-            <a target="_blank" class="footer__acknowledgement-link" href="https://www.youtube.com/watch?v=moIHTT2XK9g">Password Change Confirmation Tutorial</a>
             <a target="_blank" class="footer__acknowledgement-link" href="https://www.geeksforgeeks.org/gradient-borders/">Gradient Border Guide</a>
         </div>
     </footer>

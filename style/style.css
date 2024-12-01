@@ -2277,6 +2277,8 @@ legend {
     padding: 0;
 }
 
+
+
 /* Admin Page */
 /* Main Content Styles */
 .main-content-admin {
@@ -2465,7 +2467,214 @@ legend {
 }
 
 
-/* View Contribute */
+/* VIEW CONTRIBUTION PAGE */
+.view-contributions__main-content {
+    padding: 2rem;
+    background-color: var(--clr-light);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 0.4em;
+    margin: 2rem auto;
+    max-width: 90%;
+}
+
+/* Dashboard sections */
+.view-contributions__dashboard-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Contribution table wrapper */
+.view-contributions__table-wrapper {
+    overflow-x: auto;
+}
+
+/* Contribution table */
+.view-contributions__contribution-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 1rem;
+    border-radius: 0.4em;
+    overflow: hidden;
+}
+
+.view-contributions__contribution-table th, .view-contributions__contribution-table td {
+    border: 1px solid var(--clr-dark);
+    padding: 0.5rem;
+    text-align: left;
+    font-size: var(--size-base);
+}
+
+.view-contributions__contribution-table th {
+    background-color: var(--clr-green);
+    color: var(--clr-light);
+}
+
+.view-contributions__contribution-table td {
+    background-color: var(--clr-light);
+}
+
+.view-contributions__btn {
+    background-color: var(--clr-orange);
+    color: var(--clr-light);
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    border-radius: 0.4em;
+    transition: background-color 0.3s ease;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+}
+
+.view-contributions__btn:hover {
+    background-color: var(--clr-dark);
+}
+
+
+/* USER DASHBOARD PAGE */
+.user-dashboard__main-content {
+    padding: 2rem;
+    background-color: var(--clr-light);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 0.4em;
+    margin: 2rem auto;
+    max-width: 90%;
+}
+
+/* Dashboard sections */
+.user-dashboard__sections {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Change password form */
+.change-password__main-content {
+    padding: 2rem;
+    background-color: var(--clr-light);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 0.4em;
+    margin: 2rem auto;
+    max-width: 90%;
+}
+
+.change-password__container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.change-password__form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.change-password__input-box {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.change-password__input-box label {
+    font-size: var(--size-base);
+    color: var(--clr-dark);
+}
+
+.change-password__input-box input {
+    padding: 0.5rem;
+    font-size: var(--size-base);
+    border: 1px solid var(--clr-dark);
+    border-radius: 0.4em;
+}
+
+.change-password__submit-btn {
+    background-color: var(--clr-orange);
+    color: var(--clr-light);
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    border-radius: 0.4em;
+    transition: background-color 0.3s ease;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+}
+
+.change-password__submit-btn:hover {
+    background-color: var(--clr-dark);
+}
+
+/* Confirmation page */
+.confirmation__main-content {
+    padding: 2rem;
+    background-color: var(--clr-light);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 0.4em;
+    margin: 2rem auto;
+    max-width: 85vw;
+}
+
+.confirmation__container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+    max-width: 75vw;
+    margin: 0 auto;
+}
+
+.confirmation__container h1 {
+    font-size: var(--size-5xl);
+    color: var(--clr-dark);
+}
+
+.confirmation__container p {
+    font-size: var(--size-base);
+    color: var(--clr-dark);
+}
+
+/* Delete account form */
+.delete-account__main-content {
+    padding: 2rem;
+    background-color: var(--clr-light);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 0.4em;
+    margin: 2rem auto;
+    max-width: 90%;
+}
+
+.delete-account__container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.delete-account__form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.delete-account__input-box {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.delete-account__input-box label {
+    font-size: var(--size-base);
+    color: var(--clr-dark);
+}
+
+.delete-account__input-box input {
+    padding: 0.5rem;
+    font-size: var(--size-base);
+    border: 1px solid var(--clr-dark);
+    border-radius: 0.4em;
+}
 
 
 /* PC display starts here */
@@ -3307,8 +3516,63 @@ legend {
     }
 
 
-    /* View Contribution */
+    /* VIEW CONTRIBUTION PAGE */
+    .view-contributions__main-content {
+        padding: 1rem;
+        margin: 1rem auto;
+    }
 
+    .view-contributions__contribution-table th, .view-contributions__contribution-table td {
+        padding: 0.5rem;
+        font-size: var(--size-sm);
+    }
+
+    .view-contributions__btn {
+        padding: 0.5rem 1rem;
+        font-size: var(--size-sm);
+    }
+
+    .view-contributions__table-wrapper {
+        overflow-x: auto;
+    }
+
+    .view-contributions__contribution-table {
+        display: block;
+        width: 100%;
+    }
+
+    .view-contributions__contribution-table thead, .view-contributions__contribution-table tbody, .view-contributions__contribution-table th, .view-contributions__contribution-table td, .view-contributions__contribution-table tr {
+        display: block;
+    }
+
+    .view-contributions__contribution-table th, .view-contributions__contribution-table td {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .view-contributions__contribution-table tr {
+        margin-bottom: 1rem;
+    }
+
+
+    /* USER DASHBOARD */
+    .user-dashboard__main-content,
+    .change-password__main-content,
+    .delete-account__main-content,
+    .confirmation__main-content {
+        padding: 1rem;
+        margin: 1rem auto;
+    }
+
+    .change-password__input-box input,
+    .delete-account__input-box input {
+        padding: 0.5rem;
+        font-size: var(--size-sm);
+    }
+
+    .confirmation__container {
+        max-width: 100%;
+    }
 }
    
 

@@ -17,7 +17,7 @@
     <!-- Including header part -->
     <?php include 'include/header.php'; ?>
 
-    <main class="change-password__wrapper container">
+    <main class="change-password__main-content container">
         <div class="change-password__container">
             <h1>Change Password</h1>
             <form action="include/change_password_process.php" method="post" class="change-password__form">
@@ -36,7 +36,7 @@
                         <input type="password" id="confirm_password" name="confirm_password" required>
                     </div>
                 </fieldset>
-                <input class="submit__btn btn" type="submit" value="Change Password">
+                <input class="btn" type="submit" value="Change Password">
             </form>
         </div>
     </main>
