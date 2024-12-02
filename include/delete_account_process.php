@@ -18,6 +18,13 @@ if ($password !== $user['password']) {
     exit();
 }
 
+// Delete the user's contributions first
+$query = "DELETE FROM userContribution WHERE userID = ?";
+$stmt = $conn->prepare($query);
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+
+// Then delete the user
 $query = "DELETE FROM registeredUsers WHERE userID = ?";
 $stmt = $conn->prepare($query);
 $stmt->bind_param("i", $user_id);
