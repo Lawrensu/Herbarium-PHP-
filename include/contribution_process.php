@@ -14,7 +14,7 @@ if (!isset($_SESSION['user_id']) && !isset($_SESSION['admin_id'])) {
 }
 
 // Get the user ID from the session
-$userID = $_SESSION['user_id'];
+$userID = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : $_SESSION['admin_id'];
 
 // Database connection
 $conn = new mysqli("localhost", "root", "", "Leafly_DB");
@@ -73,7 +73,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             // Debugging: Check contribution ID
             echo "Contribution ID: " . $contributionID . "<br>";
             // Redirect to the confirmation page
-            header("Location: ../contribution_confirmation.php?contributionID=" . $contributionID);
+            header("Location: contribution_confirmation.php?contributionID=" . $contributionID);
             exit();
         } else {
             echo "Error: " . $sql->error;
