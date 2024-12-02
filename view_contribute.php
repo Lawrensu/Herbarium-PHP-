@@ -60,7 +60,7 @@
                                     echo "<td>" . htmlspecialchars($row['plantFamily']) . "</td>";
                                     echo "<td>" . htmlspecialchars($row['plantGenus']) . "</td>";
                                     echo "<td>" . htmlspecialchars($row['plantSpecies']) . "</td>";
-                                    echo "<td><a href='uploads/" . htmlspecialchars($freshLeafPath) . "' target='_blank'>Fresh Leaf</a> | <a href='uploads/" . htmlspecialchars($herbariumPath) . "' target='_blank'>Herbarium</a></td>";
+                                    echo "<td><a href='" . htmlspecialchars($freshLeafPath) . "' target='_blank'>Fresh Leaf</a> | <a href='" . htmlspecialchars($herbariumPath) . "' target='_blank'>Herbarium</a></td>";
                                     echo "<td>" . htmlspecialchars($row['contribution_date']) . "</td>";
                                     echo "</tr>";
                                 }
