@@ -125,7 +125,8 @@
           </section>
         </div>
 
-        <a class="index__vid-presentation-btn btn" href="https://youtu.be/qqBE8H50ySg">Video Presentation</a>
+        <a class="index__vid-presentation-btn btn" href="https://youtu.be/qqBE8H50ySg">Video Presentation (Assignment 1)</a>
+        <a class="index__vid-presentation-btn btn" href="https://youtu.be/81LWfjQtnII">Video Presentation (Assignment 2)</a>
      </footer>
 
      <?php include 'include/bckToTopBtn.php'; ?>
